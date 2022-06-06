@@ -12,6 +12,7 @@ namespace ContactApp
 {
     class ContanctsRepository : IContanctsRepository
     {
+        //bad az etesale git ezafe shode 
         private string connectionString = @"Data Source=DESKTOP-4D2NIHO\SQLEXPRESS;Initial Catalog=PhoneBook;Integrated Security=true";
 
         public DataTable Search(string parameter)
