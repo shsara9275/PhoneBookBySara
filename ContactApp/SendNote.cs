@@ -275,8 +275,8 @@ namespace ContactApp
             _stateSelected = "";
             _countrySelected = "";
             _categorySelected = "CategoryID";
-            _lastUpdateFromTextBox = string.IsNullOrEmpty(lastUpdateFromTextBox.Text.Trim()) ? "convert(datetime,'1800-01-01T00:00:00.000')" : $"'{lastUpdateFromTextBox.Text.Trim()}'";
-            _lastUpdateToTextBox = string.IsNullOrEmpty(lastUpdateToTextBox.Text.Trim()) ? "convert(datetime,'9999-12-31T23:59:59.997')" : $"'{lastUpdateToTextBox.Text.Trim()}'";
+            //_lastUpdateFromTextBox = string.IsNullOrEmpty(lastUpdateFromTextBox.Text.Trim()) ? "convert(datetime,'1800-01-01T00:00:00.000')" : $"'{lastUpdateFromTextBox.Text.Trim()}'";
+            //_lastUpdateToTextBox = string.IsNullOrEmpty(lastUpdateToTextBox.Text.Trim()) ? "convert(datetime,'9999-12-31T23:59:59.997')" : $"'{lastUpdateToTextBox.Text.Trim()}'";
             _legalNameTextBox = string.IsNullOrEmpty(legalNameTextBox.Text.Trim()) ? string.Empty : legalNameTextBox.Text.Trim();
             _dbaNameTextBox = string.IsNullOrEmpty(dbaNameTextBox.Text.Trim()) ? string.Empty : dbaNameTextBox.Text.Trim();
             _fromUsDotNumberTextBox = string.IsNullOrEmpty(fromUSDOTTextBox.Text.Trim()) ? "0" : $"'{fromUSDOTTextBox.Text.Trim()}'";
@@ -392,15 +392,15 @@ namespace ContactApp
 
                     if ((bool)(row.Cells["isSelectedForSendcheckBoxColumn"].Value == null ? false : row.Cells["isSelectedForSendcheckBoxColumn"].Value))
                     {
-                        var resPhone = repository.InsertNotes(row.Cells["id"].Value.ToString(), "", noteTxtBox.Text.Trim());
-                        //FillNoteGv();
-                        if (!resPhone)
+                        var response = repository.InsertNotes(row.Cells["id"].Value.ToString(), titleTextBox.Text.Trim(), noteTxtBox.Text.Trim());
+                        if (!response)
                         {
                             MessageBox.Show("An Error Ocured", "Warnning", MessageBoxButtons.OKCancel);
                         }
                     }
                 }
-                noteTxtBox.Text = "";
+                titleTextBox.Text = string.Empty;
+                noteTxtBox.Text = string.Empty;
 
                 getAllFilters();
 

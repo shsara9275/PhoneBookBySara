@@ -1436,11 +1436,17 @@ namespace ContactApp
         {
             //if (MessageBox.Show("Are You Sure About Update Item?", "Warnning", MessageBoxButtons.YesNo) == DialogResult.Yes)
             //{
-            if (dataGridView2.CurrentRow != null)
+            if (dataGridView2.CurrentRow != null && !string.IsNullOrEmpty(textBox16.Text) && !string.IsNullOrEmpty(textBox17.Text))
             {
                 repository.UpdateNotes(dataGridView2.CurrentRow.Cells[0].Value.ToString(), textBox16.Text, textBox17.Text);
                 FillNoteGv();
+                textBox16.Text = string.Empty;
+                textBox17.Text = string.Empty;
 
+            }
+            else
+            {
+                MessageBox.Show("Title and content can't be empty", "Warnning", MessageBoxButtons.OKCancel);
             }
             //}
         }
