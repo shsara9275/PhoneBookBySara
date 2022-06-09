@@ -14,6 +14,7 @@ namespace ContactApp
     {
         //bad az etesale git ezafe shode 
         //in taghire jadid az systeme khone ast
+        //in taghir az systeme sherkat ast
         private string connectionString = @"Data Source=ICT-HAGHI-Z490\SQLEXPRESS2;Initial Catalog=PhoneBook;Integrated Security=true";
 
         public DataTable Search(string parameter)
