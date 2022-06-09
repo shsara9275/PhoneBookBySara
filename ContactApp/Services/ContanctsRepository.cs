@@ -13,6 +13,7 @@ namespace ContactApp
     class ContanctsRepository : IContanctsRepository
     {
         //bad az etesale git ezafe shode 
+        //in taghire jadid az systeme khone ast
         private string connectionString = @"Data Source=ICT-HAGHI-Z490\SQLEXPRESS2;Initial Catalog=PhoneBook;Integrated Security=true";
 
         public DataTable Search(string parameter)
