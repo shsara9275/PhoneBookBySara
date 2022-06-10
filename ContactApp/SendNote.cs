@@ -61,6 +61,18 @@ namespace ContactApp
             stateSelected = new List<CCBoxItem>();
             phoneBookSelected = new List<CCBoxItem>();
             categorySelected = new List<CCBoxItem>();
+
+            // Set DatePicker Format as Custom
+            fromLastUpdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            toLastUpdateDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+
+            // Set Custome Date Formate
+            fromLastUpdateDateTimePicker.CustomFormat = " ";// or "MM/dd/yyyy"
+            toLastUpdateDateTimePicker.CustomFormat = " ";//or "MM/dd/yyyy"
+
+            // Set Default date
+            //fromLastUpdateDateTimePicker.Value = DateTime.Now;
+            //toLastUpdateDateTimePicker.Value = DateTime.Now;
         }
 
         private void PhoneBookComboBoxFillDataSource(string q)
@@ -242,31 +254,134 @@ namespace ContactApp
         private void cityCheckedComboBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             CCBoxItem item = cityCheckedComboBox.Items[e.Index] as CCBoxItem;
-            if (!citySelected.Contains(item))
+            item.IsChecked = e.NewValue.ToString();
+            if (!citySelected.Any(a => a.Name.ToString().ToUpper().Trim() == item.Name.ToString().ToUpper().Trim()))
             {
+                //قبلا در لیست نبوده
                 citySelected.Add(item);
+                if (item.Name.Trim().ToUpper() == "ALL")
+                {
+                    CategoryComboBoxFillDataSource(null, null);
+                }
+                else
+                {
+
+                    getAllFilters();
+
+                }
             }
-            getAllFilters();
+            else
+            {
+
+                //قبل در لیست بوده
+                if (item.IsChecked == "Unchecked")
+                {
+                    citySelected.Remove(item);
+
+                    foreach (var data in citySelected)
+                    {
+                        if (data.Name.Trim().ToUpper() == "ALL")
+                        {
+                            CategoryComboBoxFillDataSource(null, null);
+                        }
+                        else
+                        {
+                            getAllFilters();
+
+                        }
+                    }
+                }
+            }
+
         }
         private void countryCheckedComboBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             CCBoxItem item = countryCheckedComboBox.Items[e.Index] as CCBoxItem;
-            if (!countrySelected.Contains(item))
+            item.IsChecked = e.NewValue.ToString();
+            if (!countrySelected.Any(a => a.Name.ToString().ToUpper().Trim() == item.Name.ToString().ToUpper().Trim()))
             {
+                //قبلا در لیست نبوده
                 countrySelected.Add(item);
+                if (item.Name.Trim().ToUpper() == "ALL")
+                {
+                    CategoryComboBoxFillDataSource(null, null);
+                }
+                else
+                {
+
+                    getAllFilters();
+
+                }
             }
-            getAllFilters();
+            else
+            {
+
+                //قبل در لیست بوده
+                if (item.IsChecked == "Unchecked")
+                {
+                    countrySelected.Remove(item);
+
+                    foreach (var data in countrySelected)
+                    {
+                        if (data.Name.Trim().ToUpper() == "ALL")
+                        {
+                            CategoryComboBoxFillDataSource(null, null);
+                        }
+                        else
+                        {
+                            getAllFilters();
+
+                        }
+                    }
+                }
+            }
+
+            
         }
         private void stateCheckedComboBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             CCBoxItem item = stateCheckedComboBox.Items[e.Index] as CCBoxItem;
-            if (!stateSelected.Contains(item))
+            item.IsChecked = e.NewValue.ToString();
+            if (!stateSelected.Any(a => a.Name.ToString().ToUpper().Trim() == item.Name.ToString().ToUpper().Trim()))
             {
+                //قبلا در لیست نبوده
                 stateSelected.Add(item);
+                if (item.Name.Trim().ToUpper() == "ALL")
+                {
+                    CategoryComboBoxFillDataSource(null, null);
+                }
+                else
+                {
+
+                    getAllFilters();
+
+                }
             }
-            getAllFilters();
+            else
+            {
+
+                //قبل در لیست بوده
+                if (item.IsChecked == "Unchecked")
+                {
+                    stateSelected.Remove(item);
+
+                    foreach (var data in stateSelected)
+                    {
+                        if (data.Name.Trim().ToUpper() == "ALL")
+                        {
+                            CategoryComboBoxFillDataSource(null, null);
+                        }
+                        else
+                        {
+                            getAllFilters();
+
+                        }
+                    }
+                }
+            }
+
         }
-         
+
 
         /**/
         public void getAllFilters()
@@ -274,24 +389,24 @@ namespace ContactApp
             _citySelected = "";
             _stateSelected = "";
             _countrySelected = "";
-            _categorySelected = "CategoryID";
+            _categorySelected = "";
             //_lastUpdateFromTextBox = string.IsNullOrEmpty(lastUpdateFromTextBox.Text.Trim()) ? "convert(datetime,'1800-01-01T00:00:00.000')" : $"'{lastUpdateFromTextBox.Text.Trim()}'";
             //_lastUpdateToTextBox = string.IsNullOrEmpty(lastUpdateToTextBox.Text.Trim()) ? "convert(datetime,'9999-12-31T23:59:59.997')" : $"'{lastUpdateToTextBox.Text.Trim()}'";
-            _legalNameTextBox = string.IsNullOrEmpty(legalNameTextBox.Text.Trim()) ? string.Empty : legalNameTextBox.Text.Trim();
-            _dbaNameTextBox = string.IsNullOrEmpty(dbaNameTextBox.Text.Trim()) ? string.Empty : dbaNameTextBox.Text.Trim();
-            _fromUsDotNumberTextBox = string.IsNullOrEmpty(fromUSDOTTextBox.Text.Trim()) ? "0" : $"'{fromUSDOTTextBox.Text.Trim()}'";
-            _toUsDotNumberTextBox = string.IsNullOrEmpty(toUSDOTTextBox.Text.Trim()) ? "'999999999999999'" : $"'{toUSDOTTextBox.Text.Trim()}'";
-            _mcNumberTextBox = string.IsNullOrEmpty(mcNumberTextBox.Text.Trim()) ? string.Empty : mcNumberTextBox.Text.Trim();
-            _fromCanNumberTextBox = string.IsNullOrEmpty(fromCATextBox.Text.Trim()) ? "'0'" : $"'{fromCATextBox.Text.Trim()}'";
-            _toCanNumberTextBox = string.IsNullOrEmpty(toCATextBox.Text.Trim()) ? "'999999999999999' or LEN(TRIM(CANumber)) = 0" : $"'{toCATextBox.Text.Trim()}'";
-            _fromApcantIDTextBox = string.IsNullOrEmpty(fromApcantIDTextBox.Text.Trim()) ? "'0'" : $"'{fromApcantIDTextBox.Text.Trim()}'";
-            _toApcantIDTextBox = string.IsNullOrEmpty(toApcantIDTextBox.Text.Trim()) ? "'999999999999999'" : $"'{toApcantIDTextBox.Text.Trim()}'";
-            _fromPhoneTextBox = string.IsNullOrEmpty(fromPhoneTextBox.Text.Trim()) ? "'0'" : $"'{fromPhoneTextBox.Text.Trim()}'";
-            _toPhoneTextBox = string.IsNullOrEmpty(toPhoneTextBox.Text.Trim()) ? "'999999999999999'" : $"'{toPhoneTextBox.Text.Trim()}'";
-            _fromFaxTextBox = string.IsNullOrEmpty(faxFromTextBox.Text.Trim()) ? "'0'" : $"'{faxFromTextBox.Text.Trim()}'";
-            _toFaxTextBox = string.IsNullOrEmpty(faxToTextBox.Text.Trim()) ? "'999999999999999'" : $"'{faxToTextBox.Text.Trim()}'";
-            _fromZipCodeTextBox = string.IsNullOrEmpty(fromZipCodeTextBox.Text.Trim()) ? "'0'" : $"'{fromZipCodeTextBox.Text.Trim()}'";
-            _toZipCodeTextBox = string.IsNullOrEmpty(toZipCoeTextBox.Text.Trim()) ? "'999999999999999' or LEN(TRIM(Zip)) = 0" : $"'{toZipCoeTextBox.Text.Trim()}'";
+            //_legalNameTextBox = string.IsNullOrEmpty(legalNameTextBox.Text.Trim()) ? string.Empty : legalNameTextBox.Text.Trim();
+            //_dbaNameTextBox = string.IsNullOrEmpty(dbaNameTextBox.Text.Trim()) ? string.Empty : dbaNameTextBox.Text.Trim();
+            //_fromUsDotNumberTextBox = string.IsNullOrEmpty(fromUSDOTTextBox.Text.Trim()) ? "0" : $"'{fromUSDOTTextBox.Text.Trim()}'";
+            //_toUsDotNumberTextBox = string.IsNullOrEmpty(toUSDOTTextBox.Text.Trim()) ? "'999999999999999'" : $"'{toUSDOTTextBox.Text.Trim()}'";
+            //_mcNumberTextBox = string.IsNullOrEmpty(mcNumberTextBox.Text.Trim()) ? string.Empty : mcNumberTextBox.Text.Trim();
+            //_fromCanNumberTextBox = string.IsNullOrEmpty(fromCATextBox.Text.Trim()) ? "'0'" : $"'{fromCATextBox.Text.Trim()}'";
+            //_toCanNumberTextBox = string.IsNullOrEmpty(toCATextBox.Text.Trim()) ? "'999999999999999' or LEN(TRIM(CANumber)) = 0" : $"'{toCATextBox.Text.Trim()}'";
+            //_fromApcantIDTextBox = string.IsNullOrEmpty(fromApcantIDTextBox.Text.Trim()) ? "'0'" : $"'{fromApcantIDTextBox.Text.Trim()}'";
+            //_toApcantIDTextBox = string.IsNullOrEmpty(toApcantIDTextBox.Text.Trim()) ? "'999999999999999'" : $"'{toApcantIDTextBox.Text.Trim()}'";
+            //_fromPhoneTextBox = string.IsNullOrEmpty(fromPhoneTextBox.Text.Trim()) ? "'0'" : $"'{fromPhoneTextBox.Text.Trim()}'";
+            //_toPhoneTextBox = string.IsNullOrEmpty(toPhoneTextBox.Text.Trim()) ? "'999999999999999'" : $"'{toPhoneTextBox.Text.Trim()}'";
+            //_fromFaxTextBox = string.IsNullOrEmpty(faxFromTextBox.Text.Trim()) ? "'0'" : $"'{faxFromTextBox.Text.Trim()}'";
+            //_toFaxTextBox = string.IsNullOrEmpty(faxToTextBox.Text.Trim()) ? "'999999999999999'" : $"'{faxToTextBox.Text.Trim()}'";
+            //_fromZipCodeTextBox = string.IsNullOrEmpty(fromZipCodeTextBox.Text.Trim()) ? "'0'" : $"'{fromZipCodeTextBox.Text.Trim()}'";
+            //_toZipCodeTextBox = string.IsNullOrEmpty(toZipCoeTextBox.Text.Trim()) ? "'999999999999999' or LEN(TRIM(Zip)) = 0" : $"'{toZipCoeTextBox.Text.Trim()}'";
 
             for (int i = 0; i < citySelected.Count; i++)
             {
@@ -304,7 +419,6 @@ namespace ContactApp
                     _citySelected = _citySelected + $"'{citySelected[i].Name}',";
                 }
             }
-
 
             for (int i = 0; i < stateSelected.Count; i++)
             {
@@ -344,35 +458,170 @@ namespace ContactApp
                 }
             }
 
-            string q = $@"SELECT distinct NPN_Value,
-                Companies.[id],
-                [CategoryID],
-                CONVERT(varchar,LastUpdate,101) as LastUpdate,
-                [UniqueID],
-                [LegalName],
-                [DBAName],
-                [USDOTNumber],
-                [ApcantID],
-                [CANumber] 
+            //        string q = $@"SELECT distinct NPN_Value,
+            //            Companies.[id],
+            //            [CategoryID],
+            //            CONVERT(varchar,LastUpdate,101) as LastUpdate,
+            //            [UniqueID],
+            //            [LegalName],
+            //            [DBAName],
+            //            [USDOTNumber],
+            //            [ApcantID],
+            //            [CANumber] 
+            //            FROM Companies 
+            //            INNER JOIN Contacts ON Companies.ID = Contacts.CompanyID 
+            //            WHERE Contacts.Deleted='False' 
+            //            AND Companies.Deleted='False'
+            //            AND LastUpdate between {_lastUpdateFromTextBox} and {_lastUpdateToTextBox}
+            //            AND  LegalName LIKE '%{_legalNameTextBox}%' 
+            //            AND  DBAName LIKE '%{_dbaNameTextBox}%' 
+            //            AND  Country in ({(String.IsNullOrEmpty(_countrySelected) ? "Country" : _countrySelected)})
+            //            AND  State in ({(String.IsNullOrEmpty(_stateSelected) ? "State" : _stateSelected)})
+            //            AND  City in ({(String.IsNullOrEmpty(_citySelected) ? "City" : _citySelected)})
+            //            AND  (Zip between {_fromZipCodeTextBox} and {_toZipCodeTextBox})
+            //            --AND  USDOTNumber between {_fromUsDotNumberTextBox} and {_toUsDotNumberTextBox}
+            //            AND  (CANumber between {_fromCanNumberTextBox} and {_toCanNumberTextBox})
+            //            AND  ApcantID between {_fromApcantIDTextBox} and {_toApcantIDTextBox}
+            //            AND npn_value in (select npn_value from Contacts 
+            //					where NPN_Value between {_fromPhoneTextBox} and {_toPhoneTextBox} or npn_value = '' and type=4)
+            //and npn_value in (select npn_value from Contacts 
+            //					where NPN_Value between {_fromFaxTextBox} and {_toFaxTextBox} or npn_value = '' and type=5)
+            //            AND CategoryID IN ({_categorySelected})";
+
+            string q = $@"SELECT distinct Companies.[id],[CategoryID], CONVERT(varchar,LastUpdate,101) as LastUpdate,[UniqueID],[LegalName],[DBAName],[USDOTNumber],[ApcantID],[CANumber]
                 FROM Companies 
-                INNER JOIN Contacts ON Companies.ID = Contacts.CompanyID 
-                WHERE Contacts.Deleted='False' 
-                AND Companies.Deleted='False'
-                AND LastUpdate between {_lastUpdateFromTextBox} and {_lastUpdateToTextBox}
-                AND  LegalName LIKE '%{_legalNameTextBox}%' 
-                AND  DBAName LIKE '%{_dbaNameTextBox}%' 
-                AND  Country in ({(String.IsNullOrEmpty(_countrySelected) ? "Country" : _countrySelected)})
-                AND  State in ({(String.IsNullOrEmpty(_stateSelected) ? "State" : _stateSelected)})
-                AND  City in ({(String.IsNullOrEmpty(_citySelected) ? "City" : _citySelected)})
-                AND  (Zip between {_fromZipCodeTextBox} and {_toZipCodeTextBox})
-                --AND  USDOTNumber between {_fromUsDotNumberTextBox} and {_toUsDotNumberTextBox}
-                AND  (CANumber between {_fromCanNumberTextBox} and {_toCanNumberTextBox})
-                AND  ApcantID between {_fromApcantIDTextBox} and {_toApcantIDTextBox}
-                AND npn_value in (select npn_value from Contacts 
-									where NPN_Value between {_fromPhoneTextBox} and {_toPhoneTextBox} or npn_value = '' and type=4)
-				and npn_value in (select npn_value from Contacts 
-									where NPN_Value between {_fromFaxTextBox} and {_toFaxTextBox} or npn_value = '' and type=5)
-                AND CategoryID IN ({_categorySelected})";
+                LEFT JOIN Contacts ON Companies.ID = Contacts.CompanyID 
+				LEFT JOIN DocketNumbers DN ON Companies.ID = DN.CompanyID
+                WHERE Companies.Deleted='False'";
+
+            //CATEGORY
+            if (!(String.IsNullOrWhiteSpace(_categorySelected)))
+            {
+                q += $" and CategoryID in ({_categorySelected})";
+            }
+
+            //COUNTRY
+            if (!(String.IsNullOrWhiteSpace(_countrySelected)))
+            {
+                q += $" and Country in ({_countrySelected})";
+            }
+            //CITY
+            if (!(String.IsNullOrWhiteSpace(_citySelected)))
+            {
+                q += $" and city in ({_citySelected})";
+            }
+            //STATE
+            if (!(String.IsNullOrWhiteSpace(_stateSelected)))
+            {
+                q += $" and state in ({_stateSelected})";
+            }
+            //UNIQUEID
+            if (!string.IsNullOrWhiteSpace(codeTextBox.Text))
+            {
+                q += $" and UniqueID like '%{codeTextBox.Text.Trim()}%'";
+            }
+            //LEGALNAME
+            if (!string.IsNullOrWhiteSpace(legalNameTextBox.Text))
+            {
+                q += $" and LegalName like '%{legalNameTextBox.Text.Trim()}%'";
+            }
+            //DBANAME
+            if (!string.IsNullOrWhiteSpace(dbaNameTextBox.Text))
+            {
+                q += $" and DBAName like '%{dbaNameTextBox.Text.Trim()}%'";
+            }
+            //USDOTNUMBER
+            if (!string.IsNullOrWhiteSpace(fromUSDOTTextBox.Text))
+            {
+                q += $" and USDOTNumber >= '{fromUSDOTTextBox.Text.Trim()}' ";
+            }
+            if (!string.IsNullOrWhiteSpace(toUSDOTTextBox.Text))
+            {
+                q += $" and USDOTNumber <= '{toUSDOTTextBox.Text.Trim()}' ";
+            }
+            //ZIP
+            if (!string.IsNullOrWhiteSpace(fromZipCodeTextBox.Text))
+            {
+                q += $" and Zip >= '{fromZipCodeTextBox.Text.Trim()}' ";
+            }
+            if (!string.IsNullOrWhiteSpace(toZipCoeTextBox.Text))
+            {
+                q += $" and Zip <= '{toZipCoeTextBox.Text.Trim()}' ";
+            }
+            //CANUMBER
+            if (!string.IsNullOrWhiteSpace(fromCATextBox.Text))
+            {
+                q += $" and CANumber >= '{fromCATextBox.Text.Trim()}' ";
+            }
+            if (!string.IsNullOrWhiteSpace(toCATextBox.Text))
+            {
+                q += $" and CANumber <= '{toCATextBox.Text.Trim()}' ";
+            }
+            //PHONE
+            if (!string.IsNullOrWhiteSpace(fromPhoneTextBox.Text))
+            {
+                q += $@" and npn_value in (select npn_value from Contacts inner join Companies on Companies.id = Contacts.CompanyID 
+
+                                    where NPN_Value >= '{fromPhoneTextBox.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}' and type = 4 )";
+            }
+            if (!string.IsNullOrWhiteSpace(toPhoneTextBox.Text))
+            {
+                q += $@" and npn_value in (select npn_value from Contacts inner join Companies on Companies.id = Contacts.CompanyID 
+
+                                    where NPN_Value <= '{fromPhoneTextBox.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}' and type = 4 )";
+            }
+
+            if (!string.IsNullOrWhiteSpace(fromPhoneTextBox.Text) && !string.IsNullOrWhiteSpace(toPhoneTextBox.Text))
+            {
+                q += $@" and npn_value in (select npn_value from Contacts inner join Companies on Companies.id = Contacts.CompanyID 
+
+                                    where NPN_Value >= '{fromPhoneTextBox.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}' and NPN_Value <= '{fromPhoneTextBox.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}' and type = 4 )";
+            }
+            //FAX
+            if (!string.IsNullOrWhiteSpace(faxFromTextBox.Text))
+            {
+                q += $@" and npn_value in (select npn_value from Contacts inner join Companies on Companies.id = Contacts.CompanyID 
+
+                                    where NPN_Value >= '{faxFromTextBox.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}' and type = 5 )";
+            }
+            if (!string.IsNullOrWhiteSpace(faxToTextBox.Text))
+            {
+                q += $@" and npn_value in (select npn_value from Contacts inner join Companies on Companies.id = Contacts.CompanyID 
+
+                                    where NPN_Value <= REPLACE('{faxToTextBox.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}' and type = 5 )";
+            }
+
+            if (!string.IsNullOrWhiteSpace(faxFromTextBox.Text) && !string.IsNullOrWhiteSpace(faxToTextBox.Text))
+            {
+                q += $@" and npn_value in (select npn_value from Contacts inner join Companies on Companies.id = Contacts.CompanyID 
+
+                                    where NPN_Value >= '{fromPhoneTextBox.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}' and NPN_Value <= '{fromPhoneTextBox.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}' and type = 5 )";
+            }
+
+            //LASTUPDATE
+            if (!string.IsNullOrWhiteSpace(fromLastUpdateDateTimePicker.Text))
+            {
+                q += $" and LastUpdate >= '{fromLastUpdateDateTimePicker.Value.ToString("yyyy-MM-dd").Trim().Replace('-','/')}'";
+            }
+            if (!string.IsNullOrWhiteSpace(toLastUpdateDateTimePicker.Text))
+            {
+                q += $" and LastUpdate <= '{toLastUpdateDateTimePicker.Value.ToString("yyyy-MM-dd").Trim().Replace('-', '/')}'";
+            }
+
+            //MACNUMBER OR DOCKETNUMBER
+            if (!string.IsNullOrWhiteSpace(mcNumberTextBox.Text))
+            {
+                q += $" and DN.DocketNumber like '%{mcNumberTextBox.Text.Trim()}%'";
+            }
+            //APCANTID
+            if (!string.IsNullOrWhiteSpace(fromApcantIDTextBox.Text))
+            {
+                q += $" and ApcantID >= '{fromApcantIDTextBox.Text.Trim()}'";
+            }
+            if (!string.IsNullOrWhiteSpace(toApcantIDTextBox.Text))
+            {
+                q += $" and ApcantID <= '{toApcantIDTextBox.Text.Trim()}'";
+            }
 
             DataTable dataTable = repository.SelectAllRunner(q);
             filteredDataGridView.DataSource = dataTable;
@@ -488,25 +737,58 @@ namespace ContactApp
 
         private void categoryCheckedComboBox_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-
             CCBoxItem item = categoryCheckedComboBox.Items[e.Index] as CCBoxItem;
-            if (!categorySelected.Contains(item))
+            item.IsChecked = e.NewValue.ToString();
+            if (!categorySelected.Any(a => a.ID.ToString() == item.ID.ToString()))
             {
+                //قبلا در لیست نبوده
                 categorySelected.Add(item);
+                if (item.Name.Trim().ToUpper() == "ALL")
+                {
+                    CategoryComboBoxFillDataSource(null, null);
+                }
+                else
+                {
+                    getAllFilters();
+
+                }
             }
+            else
+            {
+
+                //قبل در لیست بوده
+                if (item.IsChecked == "Unchecked")
+                {
+                    categorySelected.Remove(item);
+
+                    foreach (var data in categorySelected)
+                    {
+                        if (data.Name.Trim().ToUpper() == "ALL")
+                        {
+                            CategoryComboBoxFillDataSource(null, null);
+                        }
+                        else
+                        {
+                            getAllFilters();
+
+                        }
+                    }
+
+                }
+            }
+
+        }
+
+        private void fromLastUpdateDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            fromLastUpdateDateTimePicker.CustomFormat = fromLastUpdateDateTimePicker.Value.ToString("yyyy-MM-dd");
             getAllFilters();
-
-
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void toLastUpdateDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void lastUpdateGroupBox_Enter(object sender, EventArgs e)
-        {
-
+            toLastUpdateDateTimePicker.CustomFormat = toLastUpdateDateTimePicker.Value.ToString("yyyy-MM-dd");
+            getAllFilters();
         }
     }
 }
