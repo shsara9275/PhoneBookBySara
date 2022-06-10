@@ -32,6 +32,7 @@ namespace ContactApp
         string addrID;
         string addr2ID;
         public DataTable param;
+        string LastUpdate;
 
         public mainWindow()
         {
@@ -401,56 +402,171 @@ namespace ContactApp
                         }
                         else if (fileExt.CompareTo(".csv") == 0)
                         {
-                            DataTable dtNew = new DataTable();
-                            dtNew = repository.GetDataTabletFromCSVFile(filePath);
-                            if (dtNew.Rows != null && dtNew.Rows.Count != 0 && dtNew.Rows.ToString() != String.Empty)
+                            try
                             {
-                                dataGridView1.DataSource = dtNew;
-                            }
-                            else
-                            {
-                                MessageBox.Show("There is no data in this file", "GAUTAM POS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-
-                            var rows = (from r in dtNew.AsEnumerable() select r).Skip(1);
-                            foreach (DataRow row in rows)
-                            {
-                                var year = row[11].ToString().Substring(5);
-                                var month = row[11].ToString().Substring(1, 2);
-                                var day = row[11].ToString().Substring(3, 2);
-                                string LastUpdate = $"{year}-{month}-{day} 00:00:00.000";
-                                var phones = row[1].ToString().Split('/');
-                                //var note = row[14].ToString().Split(':');
-                                var companyID = repository.InsertCompanies(selectedNodeTag, "", "", row[0].ToString(), "", 0, 0, "", false, "", LastUpdate);
 
 
-
-                                if (companyID != null)
+                                DataTable dtNew = new DataTable();
+                                dtNew = repository.GetDataTabletFromCSVFile(filePath);
+                                if (dtNew.Rows != null && dtNew.Rows.Count != 0 && dtNew.Rows.ToString() != String.Empty)
                                 {
-                                    var resAddr = repository.InsertContact(companyID, 0, "", row[4].ToString(), row[7].ToString(), row[6].ToString(),"",row[8].ToString());
-                                    var resAddr2 = repository.InsertContact(companyID, 1, "", row[5].ToString(), "", "", "", "");
-                                    var resWebSite = repository.InsertContact(companyID, 2, row[10].ToString(), "", "", "", "", "");
-                                    var resEmail = repository.InsertContact(companyID, 3, row[9].ToString(), "", "", "", "", "");
-                                    var phoneNumbber = repository.InsertContact(companyID, 4, row[1].ToString(), "", "", "", "", "");
-                                    var faxNumbber = repository.InsertContact(companyID, 5, row[2].ToString(), "", "", "", "", "");
-                                    //var resPhone = repository.InsertNotes(companyID, note[0], note[1]);
-                                    //var docket = repository.InsertDocketNumber(companyID, row[16].ToString());
-
-                                    
-
+                                    dataGridView1.DataSource = dtNew;
                                 }
+                                else
+                                {
+                                    MessageBox.Show("There is no data in this file", "GAUTAM POS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+
+                                var rows = (from r in dtNew.AsEnumerable() select r).Skip(1);
+                                foreach (DataRow row in rows)
+                                {
+                                    
+                                    if (!string.IsNullOrEmpty(row[0].ToString()))
+                                    {
+                                        if (row[0].ToString().Length < 8)
+                                        {
+                                            row[0] = '0' + row[0].ToString();
+                                        }
+
+                                        var year = row[0].ToString().Substring(4);
+                                        var month = row[0].ToString().Substring(0, 2);
+                                        var day = row[0].ToString().Substring(2, 2);
+                                        LastUpdate = $"{year}-{month}-{day} 00:00:00.000";
+                                    }
+                                    //var phones = row[1].ToString().Split('/');
+                                    //var note = row[14].ToString().Split(':');
+                                    var companyID = repository.InsertCompanies(selectedNodeTag, row[2].ToString(), "", row[7].ToString(), row[8].ToString(), Convert.ToInt32(row[6] is DBNull ? 0 : row[6]), 0, row[5].ToString(), false, row[1].ToString(), LastUpdate);
+
+
+                                    if (companyID != null)
+                                    {
+                                        var resAddr = repository.InsertContact(companyID, 0, "", row[4].ToString(), row[7].ToString(), row[6].ToString(), "", row[8].ToString());
+                                        var resAddr2 = repository.InsertContact(companyID, 1, "", row[5].ToString(), "", "", "", "");
+                                        var resWebSite = repository.InsertContact(companyID, 2, row[10].ToString(), "", "", "", "", "");
+                                        var resEmail = repository.InsertContact(companyID, 3, row[9].ToString(), "", "", "", "", "");
+                                        
+                                        
+                                        
+
+                                        //INSERT NOTES
+                                        if (!string.IsNullOrWhiteSpace(row[32].ToString()))
+                                        {
+                                            var resPhone = repository.InsertNotes(companyID, "", row[32].ToString());
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[33].ToString()))
+                                        {
+                                            var resPhone = repository.InsertNotes(companyID, "", row[33].ToString());
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[34].ToString()))
+                                        {
+                                            var resPhone = repository.InsertNotes(companyID, "", row[34].ToString());
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[35].ToString()))
+                                        {
+                                            var resPhone = repository.InsertNotes(companyID, "", row[35].ToString());
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[36].ToString()))
+                                        {
+                                            var resPhone = repository.InsertNotes(companyID, "", row[36].ToString());
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[37].ToString()))
+                                        {
+                                            var resPhone = repository.InsertNotes(companyID, "", row[37].ToString());
+                                        }
+
+                                        //INSERT PHONES
+                                        if (!string.IsNullOrWhiteSpace(row[41].ToString()))
+                                        {
+                                            var phoneNumbber = repository.InsertContact(companyID, 4, row[41].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[42].ToString()))
+                                        {
+                                            var phoneNumbber = repository.InsertContact(companyID, 4, row[42].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[43].ToString()))
+                                        {
+                                            var phoneNumbber = repository.InsertContact(companyID, 4, row[43].ToString(), "", "", "", "", "");
+                                        }
+
+                                        //INSERT FAX
+                                        if (!string.IsNullOrWhiteSpace(row[44].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[44].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[45].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+
+                                        //INSERT ADDRESS
+                                        if (!string.IsNullOrWhiteSpace(row[46].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[47].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[48].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[49].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[50].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[51].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[52].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[53].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[54].ToString()))
+                                        {
+                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                        }
+
+                                        //INSERT DOCKETNUMBER
+                                        if (!string.IsNullOrWhiteSpace(row[3].ToString()))
+                                        {
+                                            var docket1 = repository.InsertDocketNumber(companyID, row[3].ToString());
+                                        }
+                                        if (!string.IsNullOrWhiteSpace(row[4].ToString()))
+                                        {
+                                            var docket2 = repository.InsertDocketNumber(companyID, row[4].ToString());
+                                        }
+
+
+                                    }
+                                }
+
+                                    string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
+
+                                FillDataGrid(selectednode, null);
+
+                                MessageBox.Show("contact Add Secssesfuly ", "Sucssed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                                if (dataGridView1.Rows.Count == 0)
+                                {
+                                    MessageBox.Show("There is no data in this file", "GAUTAM POS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                }
+
                             }
-
-                            string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
-
-                            FillDataGrid(selectednode, null);
-
-                            MessageBox.Show("contact Add Secssesfuly ", "Sucssed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                            if (dataGridView1.Rows.Count == 0)
+                            catch (Exception ex)
                             {
-                                MessageBox.Show("There is no data in this file", "GAUTAM POS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                var stackTrace = ex.StackTrace;
+                                MessageBox.Show(ex.Message.ToString());
                             }
                         }
                         else
@@ -798,6 +914,9 @@ namespace ContactApp
         {
             if (dataGridView1.CurrentRow != null)
             {
+                //jahate namayeshe recorde entekhabi balaye girid
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.CurrentRow.Index;
+
                 maskedTextBox2.Clear();
                 textBox2.Clear();
                 textBox3.Clear();
@@ -827,6 +946,8 @@ namespace ContactApp
                 EditContact.Enabled = true;
                 dataGridView1.CurrentRow.Selected = true;
                 tabControl1.Visible = true;
+                //baraye inke hamishe panele aval namayesh dade shavad
+                tabControl1.SelectedIndex = 0;
                 tabPage1.Enabled = false;
                 tabPage3.Enabled = false;
                 string q = $"SELECT [id],[CategoryID],CONVERT(varchar,LastUpdate,101) as LastUpdate,[UniqueID],[LegalName],[DBAName],[USDOTNumber],[ApcantID],[CANumber] FROM Companies WHERE  Deleted='False' AND ID='{CompanyID}'";
@@ -926,6 +1047,10 @@ namespace ContactApp
         {
             if (dataGridView1.CurrentRow != null)
             {
+                //jahate namayeshe recorde entekhabi balaye girid
+                dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.CurrentRow.Index;
+                //baraye inke hamishe panele aval namayesh dade shavad
+                tabControl1.SelectedIndex = 0;
                 DiscardContact.Enabled = true;
                 SaveContact.Enabled = true;
                 AddContact.Enabled = false;
@@ -1170,7 +1295,8 @@ namespace ContactApp
 
                 nodeTxtBox.Location = new Point(nodeTextLocation.X, nodeTextLocation.Y - 1);
 
-                nodeTxtBox.KeyDown += new KeyEventHandler((object senders, KeyEventArgs keyEvent) => new_node_txt_box_enter(senders, keyEvent, treeView1.SelectedNode.Tag));
+                //nodeTxtBox.KeyDown += new KeyEventHandler((object senders, KeyEventArgs keyEvent) => new_node_txt_box_enter(senders, keyEvent, treeView1.SelectedNode.Tag));
+                nodeTxtBox.KeyDown += new KeyEventHandler((object senders, KeyEventArgs keyEvent) => new_node_txt_box_enter(senders, keyEvent, treeView1.SelectedNode.Parent.Tag));
 
                 treeView1.Controls.Add(nodeTxtBox);
             }

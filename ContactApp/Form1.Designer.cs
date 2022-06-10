@@ -210,7 +210,7 @@ namespace ContactApp
             this.AddContact.Image = ((System.Drawing.Image)(resources.GetObject("AddContact.Image")));
             this.AddContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddContact.Name = "AddContact";
-            this.AddContact.Size = new System.Drawing.Size(29, 28);
+            this.AddContact.Size = new System.Drawing.Size(29, 25);
             this.AddContact.Text = "Add Contact";
             this.AddContact.Click += new System.EventHandler(this.AddContact_Click);
             // 
@@ -220,7 +220,7 @@ namespace ContactApp
             this.EditContact.Image = ((System.Drawing.Image)(resources.GetObject("EditContact.Image")));
             this.EditContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditContact.Name = "EditContact";
-            this.EditContact.Size = new System.Drawing.Size(29, 28);
+            this.EditContact.Size = new System.Drawing.Size(29, 25);
             this.EditContact.Text = "Edit Contact";
             this.EditContact.Click += new System.EventHandler(this.EditContact_Click);
             // 
@@ -230,14 +230,14 @@ namespace ContactApp
             this.DeleteContact.Image = ((System.Drawing.Image)(resources.GetObject("DeleteContact.Image")));
             this.DeleteContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteContact.Name = "DeleteContact";
-            this.DeleteContact.Size = new System.Drawing.Size(29, 28);
+            this.DeleteContact.Size = new System.Drawing.Size(29, 25);
             this.DeleteContact.Text = "Delete Contact";
             this.DeleteContact.Click += new System.EventHandler(this.DeleteContact_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
             // SaveContact
             // 
@@ -245,7 +245,7 @@ namespace ContactApp
             this.SaveContact.Image = ((System.Drawing.Image)(resources.GetObject("SaveContact.Image")));
             this.SaveContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveContact.Name = "SaveContact";
-            this.SaveContact.Size = new System.Drawing.Size(29, 28);
+            this.SaveContact.Size = new System.Drawing.Size(29, 25);
             this.SaveContact.Text = "Save Contact";
             this.SaveContact.Click += new System.EventHandler(this.SaveContact_Click);
             // 
@@ -255,14 +255,14 @@ namespace ContactApp
             this.DiscardContact.Image = ((System.Drawing.Image)(resources.GetObject("DiscardContact.Image")));
             this.DiscardContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DiscardContact.Name = "DiscardContact";
-            this.DiscardContact.Size = new System.Drawing.Size(29, 28);
+            this.DiscardContact.Size = new System.Drawing.Size(29, 25);
             this.DiscardContact.Text = "Discard Contact";
             this.DiscardContact.Click += new System.EventHandler(this.DiscardContact_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
             // 
             // ImportExel
             // 
@@ -270,19 +270,19 @@ namespace ContactApp
             this.ImportExel.Image = ((System.Drawing.Image)(resources.GetObject("ImportExel.Image")));
             this.ImportExel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ImportExel.Name = "ImportExel";
-            this.ImportExel.Size = new System.Drawing.Size(29, 28);
+            this.ImportExel.Size = new System.Drawing.Size(29, 25);
             this.ImportExel.Text = "Import Exel or CSV";
             this.ImportExel.Click += new System.EventHandler(this.ImportExel_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 25);
             this.toolStripLabel1.Text = "Search:";
             // 
             // toolStripTextBox1
@@ -290,7 +290,7 @@ namespace ContactApp
             this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.toolStripTextBox1.Size = new System.Drawing.Size(0, 31);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(0, 28);
             this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
@@ -298,13 +298,13 @@ namespace ContactApp
             // 
             this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(132, 31);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(132, 28);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStrip1
             // 
@@ -328,7 +328,7 @@ namespace ContactApp
             this.toolStripTextBox2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1165, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1165, 28);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -338,7 +338,7 @@ namespace ContactApp
             this.sendNoteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("sendNoteToolStripButton.Image")));
             this.sendNoteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.sendNoteToolStripButton.Name = "sendNoteToolStripButton";
-            this.sendNoteToolStripButton.Size = new System.Drawing.Size(29, 28);
+            this.sendNoteToolStripButton.Size = new System.Drawing.Size(29, 25);
             this.sendNoteToolStripButton.Text = "SendNote";
             this.sendNoteToolStripButton.Click += new System.EventHandler(this.sendNoteToolStripButton_Click);
             // 
@@ -348,7 +348,7 @@ namespace ContactApp
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 25);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -356,7 +356,7 @@ namespace ContactApp
             // 
             this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(159, 31);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(159, 28);
             this.toolStripTextBox2.TextChanged += new System.EventHandler(this.toolStripTextBox2_TextChanged);
             // 
             // treeView1
@@ -370,7 +370,7 @@ namespace ContactApp
             this.treeView1.Name = "treeView1";
             this.treeView1.PathSeparator = "/";
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(221, 303);
+            this.treeView1.Size = new System.Drawing.Size(221, 306);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -392,7 +392,7 @@ namespace ContactApp
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(903, 301);
+            this.dataGridView1.Size = new System.Drawing.Size(903, 304);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -402,10 +402,10 @@ namespace ContactApp
             this.panel2.Controls.Add(this.treeView1);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 31);
+            this.panel2.Location = new System.Drawing.Point(0, 28);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1165, 317);
+            this.panel2.Size = new System.Drawing.Size(1165, 320);
             this.panel2.TabIndex = 21;
             // 
             // panel3
