@@ -948,7 +948,14 @@ namespace ContactApp
                 tabControl1.Visible = true;
                 //baraye inke hamishe panele aval namayesh dade shavad
                 tabControl1.SelectedIndex = 0;
-                tabPage1.Enabled = false;
+                //**********************************
+                //tabPage1.Enabled = false;
+                panel11.Enabled = false;
+                panel10.Enabled = false;
+                panel8.Enabled = false;
+                groupBox3.Enabled = false;
+                closeButton.Enabled = true;
+                //**********************************
                 tabPage3.Enabled = false;
                 string q = $"SELECT [id],[CategoryID],CONVERT(varchar,LastUpdate,101) as LastUpdate,[UniqueID],[LegalName],[DBAName],[USDOTNumber],[ApcantID],[CANumber] FROM Companies WHERE  Deleted='False' AND ID='{CompanyID}'";
                 DataTable data = repository.SelectAllRunner(q);
@@ -1063,7 +1070,14 @@ namespace ContactApp
                 ContactEditMode = true;
                 groupBox6.Enabled = true;
                 groupBox3.Enabled = true;
-                tabPage1.Enabled = true;
+                //******************************
+                //tabPage1.Enabled = true;
+                panel11.Enabled = true;
+                panel10.Enabled = true;
+                panel8.Enabled = true;
+                groupBox3.Enabled = true;
+                closeButton.Enabled = false;
+                //******************************
                 tabPage3.Enabled = true;
                 panel4.Enabled = true;
 
@@ -1403,6 +1417,12 @@ namespace ContactApp
             dataGridView2.DataSource = dt;
             dataGridView2.Columns[0].Visible = false;
             dataGridView2.Columns[1].Visible = false;
+            //if (dataGridView2.Columns[2])
+            //{
+            //DataGridViewColumn column2 = dataGridView2.Columns[2];
+            //column2.Width = 20;
+            //dataGridView2.Columns[3].Width = 80;
+   
         }
         private void FillPNGv()
         {
@@ -1691,6 +1711,23 @@ namespace ContactApp
             //{
             //    dataGridView1.DataSource = param;
             //}
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            treeView1.Size = new Size(treeView1.Size.Width, this.Size.Height - 100);
+            tabControl1.Visible = false;
+            AddContact.Enabled = true;
+            EditContact.Enabled = true;
+            DeleteContact.Enabled = true;
+            ImportExel.Enabled = true;
+            dataGridView1.ClearSelection();
+            dataGridView1.Enabled = true;
+            treeView1.Enabled = true;
+            EditContact.Enabled = false;
+            DiscardContact.Enabled = false;
+            SaveContact.Enabled = false;
+            panel3.Visible = false;
         }
     }
 }

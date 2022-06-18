@@ -133,6 +133,7 @@ namespace ContactApp
             this.label18 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -1005,6 +1006,7 @@ namespace ContactApp
             // 
             // panel9
             // 
+            this.panel9.Controls.Add(this.closeButton);
             this.panel9.Controls.Add(this.groupBox3);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel9.Location = new System.Drawing.Point(776, 0);
@@ -1323,6 +1325,16 @@ namespace ContactApp
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.SaveContact_Click);
             // 
+            // closeButton
+            // 
+            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
+            this.closeButton.Location = new System.Drawing.Point(325, -1);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(40, 25);
+            this.closeButton.TabIndex = 47;
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // mainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1484,6 +1496,7 @@ namespace ContactApp
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.MaskedTextBox docketNumbermaskedTextBox;
         private System.Windows.Forms.ToolStripButton sendNoteToolStripButton;
+        private System.Windows.Forms.Button closeButton;
     }
 }
 

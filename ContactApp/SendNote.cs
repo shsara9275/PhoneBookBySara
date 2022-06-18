@@ -675,6 +675,7 @@ namespace ContactApp
                 phoneBookSelected.Add(item);
                 if (item.Name.Trim().ToUpper() == "ALL")
                 {
+
                     CategoryComboBoxFillDataSource(null, null);
                 }
                 else
