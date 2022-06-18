@@ -53,45 +53,41 @@ namespace ContactApp
                 q += $" and DBAName like '%{textBox3.Text.Trim()}%'";
             }
             //PHONE
-            if (!string.IsNullOrEmpty(maskedTextBox1.Text.Trim().Replace('-', ' ').Replace('(',' ').Replace(')', ' ').Trim()))
+            if (!string.IsNullOrEmpty(maskedTextBox1.Text.Replace("-", "").Replace("(","").Replace(")", "").Trim()))
             {
-                q += $@" and npn_value in (select npn_value from Contacts inner join Companies on Companies.id = Contacts.CompanyID 
-
-                                    where NPN_Value LIKE '%{maskedTextBox1.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}%' and type = 4 )";
+                q += $@" and NPN_Value in (select NPN_Value from Contacts where NPN_Value like '%{maskedTextBox1.Text.Replace("-", "").Replace("(", "").Replace(")", "").Trim()}%' and Type = 4)";
 
             }
             //FAX
-            if (!string.IsNullOrEmpty(maskedTextBox2.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ').Trim()))
+            if (!string.IsNullOrEmpty(maskedTextBox2.Text.Replace("-", "").Replace("(", "").Replace(")", "").Trim()))
             {
-                q += $@" and npn_value in (select npn_value from Contacts inner join Companies on Companies.id = Contacts.CompanyID 
-
-                                    where NPN_Value LIKE '%{maskedTextBox2.Text.Trim().Replace('-', ' ').Replace('(', ' ').Replace(')', ' ')}%' and type = 4 )";
+                q += $@" and NPN_Value in (select NPN_Value from Contacts where NPN_Value like '%{maskedTextBox2.Text.Replace("-", "").Replace("(", "").Replace(")", "").Trim()}%' and Type = 5)";
 
             }
             //WEBSITE
             if (!string.IsNullOrEmpty(textBox14.Text))
             {
-                
+                q += $" and Value like '%{textBox14.Text.Trim()}%'";
             }
             //EMAIL
             if (!string.IsNullOrEmpty(textBox8.Text))
             {
-
+                q += $" and Value like '%{textBox8.Text.Trim()}%'";
             }
             //COUNTRY
             if (!string.IsNullOrEmpty(textBox4.Text))
             {
-                q += $" and Country in ({textBox4})";
+                q += $" and Country like '%{textBox4.Text.Trim()}%'";
             }
             //STATE
             if (!string.IsNullOrEmpty(textBox5.Text))
             {
-                q += $" and state in ({textBox5})";
+                q += $" and state like '%{textBox5.Text.Trim()}%'";
             }
             //CITY
             if (!string.IsNullOrEmpty(textBox6.Text))
             {
-                q += $" and city in ({textBox6})";
+                q += $" and city like '%{textBox6.Text.Trim()}%'";
             }
             //ZIPCODE
             if (!string.IsNullOrEmpty(textBox7.Text))
@@ -103,33 +99,6 @@ namespace ContactApp
             {
                 q += $" and ADDRESS LIKE '%{textBox16.Text.Trim()}%' ";
             }
-
-            //var _maskedTextBox1 = maskedTextBox1.Text.Trim().Length < 11 ? string.Empty : maskedTextBox1.Text;
-            //var _maskedTextBox2 = maskedTextBox2.Text.Trim().Length < 11 ? string.Empty : maskedTextBox2.Text;
-            //var _textBox14 = textBox14.Text.Trim().Length < 11 ? string.Empty : textBox14.Text;
-            //var _textBox8 = textBox8.Text.Trim().Length < 11 ? string.Empty : textBox8.Text;
-
-            //string q = $"SELECT distinct Companies.[id]," +
-            //    $"[CategoryID]," +
-            //    $"CONVERT(varchar,LastUpdate,101) as LastUpdate," +
-            //    $"[UniqueID]," +
-            //    $"[LegalName]," +
-            //    $"[DBAName]," +
-            //    $"[USDOTNumber]," +
-            //    $"[ApcantID]," +
-            //    $"[CANumber] " +
-            //    $"FROM Companies " +
-            //    $"INNER JOIN Contacts ON Companies.ID = Contacts.CompanyID " +
-            //    $"WHERE Contacts.Deleted='False' " +
-            //    $"AND Companies.Deleted='False' " +
-            //    $"AND UniqueID LIKE '%{textBox1.Text}%' " +
-            //    $"AND  LegalName LIKE '%{textBox2.Text}%' " +
-            //    $"AND  DBAName LIKE '%{textBox3.Text}%'  " +
-            //    $"AND  (Value LIKE '%{_maskedTextBox1}%'  AND  Value LIKE '%{_maskedTextBox2}%' AND  Value LIKE '%{_textBox14}%' AND  Value LIKE '%{_textBox8}%' )" +
-            //    $"AND  Address LIKE '%{textBox16.Text}%' " +
-            //    $"AND  Country LIKE '%{textBox4.Text}%' " +
-            //    $"AND  City LIKE '%{textBox6.Text}%' " +
-            //    $"AND  Zip LIKE '%{textBox7.Text}%'";
 
             DataTable dataTable =  repository.SelectAllRunner(q);
             Main.param = dataTable;
