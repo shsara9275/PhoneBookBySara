@@ -109,6 +109,7 @@ namespace ContactApp
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.closeButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
@@ -133,7 +134,6 @@ namespace ContactApp
             this.label18 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.closeButton = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -288,7 +288,6 @@ namespace ContactApp
             // 
             // toolStripTextBox1
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.toolStripTextBox1.Size = new System.Drawing.Size(0, 28);
@@ -355,7 +354,6 @@ namespace ContactApp
             // 
             // toolStripTextBox2
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(159, 28);
             this.toolStripTextBox2.TextChanged += new System.EventHandler(this.toolStripTextBox2_TextChanged);
@@ -530,7 +528,7 @@ namespace ContactApp
             this.textBox12.Margin = new System.Windows.Forms.Padding(4);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(15, 22);
-            this.textBox12.TabIndex = 32;
+            this.textBox12.TabIndex = 44;
             // 
             // label9
             // 
@@ -551,7 +549,7 @@ namespace ContactApp
             this.textBox15.MaxLength = 7;
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(15, 22);
-            this.textBox15.TabIndex = 30;
+            this.textBox15.TabIndex = 45;
             this.textBox15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // textBox14
@@ -562,7 +560,7 @@ namespace ContactApp
             this.textBox14.Margin = new System.Windows.Forms.Padding(4);
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new System.Drawing.Size(15, 22);
-            this.textBox14.TabIndex = 27;
+            this.textBox14.TabIndex = 42;
             // 
             // label7
             // 
@@ -582,7 +580,7 @@ namespace ContactApp
             this.textBox13.Margin = new System.Windows.Forms.Padding(4);
             this.textBox13.Name = "textBox13";
             this.textBox13.Size = new System.Drawing.Size(15, 22);
-            this.textBox13.TabIndex = 26;
+            this.textBox13.TabIndex = 43;
             // 
             // label8
             // 
@@ -602,7 +600,7 @@ namespace ContactApp
             this.textBox11.Margin = new System.Windows.Forms.Padding(4);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(15, 22);
-            this.textBox11.TabIndex = 23;
+            this.textBox11.TabIndex = 41;
             // 
             // label5
             // 
@@ -622,7 +620,7 @@ namespace ContactApp
             this.textBox10.Margin = new System.Windows.Forms.Padding(4);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(15, 22);
-            this.textBox10.TabIndex = 22;
+            this.textBox10.TabIndex = 40;
             // 
             // label6
             // 
@@ -684,7 +682,7 @@ namespace ContactApp
             this.docketNumbermaskedTextBox.Mask = "LL-999999";
             this.docketNumbermaskedTextBox.Name = "docketNumbermaskedTextBox";
             this.docketNumbermaskedTextBox.Size = new System.Drawing.Size(177, 22);
-            this.docketNumbermaskedTextBox.TabIndex = 40;
+            this.docketNumbermaskedTextBox.TabIndex = 36;
             // 
             // label15
             // 
@@ -702,7 +700,7 @@ namespace ContactApp
             this.button11.Margin = new System.Windows.Forms.Padding(4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(80, 28);
-            this.button11.TabIndex = 43;
+            this.button11.TabIndex = 39;
             this.button11.Text = "Delete";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
@@ -713,7 +711,7 @@ namespace ContactApp
             this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(80, 28);
-            this.button10.TabIndex = 42;
+            this.button10.TabIndex = 38;
             this.button10.Text = "Edit";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.button10_Click);
@@ -724,7 +722,7 @@ namespace ContactApp
             this.button9.Margin = new System.Windows.Forms.Padding(4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(80, 28);
-            this.button9.TabIndex = 41;
+            this.button9.TabIndex = 37;
             this.button9.Text = "Add";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
@@ -786,7 +784,7 @@ namespace ContactApp
             this.textBox8.MaxLength = 7;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(177, 22);
-            this.textBox8.TabIndex = 27;
+            this.textBox8.TabIndex = 35;
             this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label13
@@ -808,7 +806,7 @@ namespace ContactApp
             this.textBox6.MaxLength = 7;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(177, 22);
-            this.textBox6.TabIndex = 25;
+            this.textBox6.TabIndex = 33;
             this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // textBox7
@@ -820,7 +818,7 @@ namespace ContactApp
             this.textBox7.MaxLength = 7;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(177, 22);
-            this.textBox7.TabIndex = 24;
+            this.textBox7.TabIndex = 34;
             this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label14
@@ -873,7 +871,7 @@ namespace ContactApp
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.ReadOnly = true;
             this.maskedTextBox2.Size = new System.Drawing.Size(175, 22);
-            this.maskedTextBox2.TabIndex = 32;
+            this.maskedTextBox2.TabIndex = 28;
             // 
             // textBox18
             // 
@@ -905,7 +903,7 @@ namespace ContactApp
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(175, 22);
-            this.textBox3.TabIndex = 25;
+            this.textBox3.TabIndex = 30;
             // 
             // textBox2
             // 
@@ -915,7 +913,7 @@ namespace ContactApp
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(175, 22);
-            this.textBox2.TabIndex = 24;
+            this.textBox2.TabIndex = 29;
             // 
             // label12
             // 
@@ -972,7 +970,7 @@ namespace ContactApp
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(171, 22);
-            this.textBox4.TabIndex = 23;
+            this.textBox4.TabIndex = 31;
             // 
             // label2
             // 
@@ -992,7 +990,7 @@ namespace ContactApp
             this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(171, 22);
-            this.textBox5.TabIndex = 22;
+            this.textBox5.TabIndex = 32;
             // 
             // label1
             // 
@@ -1014,6 +1012,16 @@ namespace ContactApp
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(373, 302);
             this.panel9.TabIndex = 34;
+            // 
+            // closeButton
+            // 
+            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
+            this.closeButton.Location = new System.Drawing.Point(325, -1);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(40, 25);
+            this.closeButton.TabIndex = 47;
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // groupBox3
             // 
@@ -1052,7 +1060,7 @@ namespace ContactApp
             this.dataGridView5.RowHeadersWidth = 51;
             this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView5.Size = new System.Drawing.Size(169, 139);
-            this.dataGridView5.TabIndex = 46;
+            this.dataGridView5.TabIndex = 49;
             this.dataGridView5.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellClick);
             this.dataGridView5.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellDoubleClick);
             // 
@@ -1063,7 +1071,7 @@ namespace ContactApp
             this.maskedTextBox1.Mask = "(999) 000-0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(147, 22);
-            this.maskedTextBox1.TabIndex = 45;
+            this.maskedTextBox1.TabIndex = 47;
             this.maskedTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.maskedTextBox1_KeyDown);
             // 
             // comboBox1
@@ -1077,7 +1085,7 @@ namespace ContactApp
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(80, 24);
-            this.comboBox1.TabIndex = 44;
+            this.comboBox1.TabIndex = 46;
             // 
             // panel12
             // 
@@ -1097,7 +1105,7 @@ namespace ContactApp
             this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(186, 33);
-            this.button7.TabIndex = 40;
+            this.button7.TabIndex = 51;
             this.button7.Text = "Delete Number";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
@@ -1109,7 +1117,7 @@ namespace ContactApp
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(171, 33);
-            this.button5.TabIndex = 38;
+            this.button5.TabIndex = 50;
             this.button5.Text = "Add Number";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -1132,7 +1140,7 @@ namespace ContactApp
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(169, 139);
-            this.dataGridView3.TabIndex = 42;
+            this.dataGridView3.TabIndex = 48;
             this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             this.dataGridView3.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellDoubleClick);
             // 
@@ -1185,7 +1193,6 @@ namespace ContactApp
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(427, 23);
@@ -1289,7 +1296,7 @@ namespace ContactApp
             this.textBox19.Name = "textBox19";
             this.textBox19.ReadOnly = true;
             this.textBox19.Size = new System.Drawing.Size(533, 22);
-            this.textBox19.TabIndex = 32;
+            this.textBox19.TabIndex = 54;
             // 
             // label18
             // 
@@ -1308,7 +1315,7 @@ namespace ContactApp
             this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(119, 28);
-            this.button6.TabIndex = 1;
+            this.button6.TabIndex = 53;
             this.button6.Text = "Cancel";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.DiscardContact_Click);
@@ -1320,20 +1327,10 @@ namespace ContactApp
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(119, 28);
-            this.button4.TabIndex = 0;
+            this.button4.TabIndex = 52;
             this.button4.Text = "Save";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.SaveContact_Click);
-            // 
-            // closeButton
-            // 
-            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(325, -1);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(40, 25);
-            this.closeButton.TabIndex = 47;
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // mainWindow
             // 

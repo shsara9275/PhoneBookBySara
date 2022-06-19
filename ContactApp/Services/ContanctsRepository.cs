@@ -72,7 +72,7 @@ namespace ContactApp
 
         public DataTable SelectAllPhoneBook()
         {
-            string query = "SELECT [ID],[Title] FROM [dbo].[PhoneBooks] WHERE Deleted='False' ORDER BY [Title]";
+            string query = "SELECT [ID],[Title] FROM [dbo].[PhoneBooks] WHERE Deleted='False' ORDER BY [CreateDate]";
             return SelectAllRunner(query);
         }
         public DataTable SelectAllCategory()
@@ -104,7 +104,7 @@ namespace ContactApp
 
         }
         public DataTable GetDocketNumberByCompanyID(string CompanyID) {
-            string query = $"SELECT [ID],[CompanyID],[DocketNumber] FROM [dbo].[DocketNumbers] WHERE Deleted='False' AND CompanyID='{CompanyID}'";
+            string query = $"SELECT [ID],[CompanyID],[DocketNumber] FROM [dbo].[DocketNumbers] WHERE Deleted='False' AND CompanyID='{CompanyID}' Order By CreateDate DESC";
             return SelectAllRunner(query);
 
         }
@@ -126,7 +126,7 @@ namespace ContactApp
 
         public DataTable GetCategoriesByPhoneBookID(string PhoneBookID)
         {
-            string query = $"SELECT [ID],[Title],[ParentID],[PhoneBookID] FROM [dbo].[Categories] WHERE Deleted='False' AND PhoneBookID='{PhoneBookID}' AND Title != 'None' AND ParentID = '7cf2f60e-6903-4cb4-b642-0b060aacf2d9'  ORDER BY [Title]";
+            string query = $"SELECT [ID],[Title],[ParentID],[PhoneBookID] FROM [dbo].[Categories] WHERE Deleted='False' AND PhoneBookID='{PhoneBookID}' AND Title != 'None' AND ParentID = '7cf2f60e-6903-4cb4-b642-0b060aacf2d9'  ORDER BY [CreateDate]";
             return SelectAllRunner(query);
 
         }

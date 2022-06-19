@@ -168,6 +168,7 @@ namespace ContactApp
 
         private void filltreeview()
         {
+
             treeView1.BeginUpdate();
             treeView1.Nodes.Clear();
 
@@ -243,7 +244,14 @@ namespace ContactApp
             groupBox6.Enabled = false;
             groupBox3.Enabled = false;
             tabControl1.Visible = true;
-            tabPage1.Enabled = true;
+            //*********************************
+            //tabPage1.Enabled = true;
+            panel11.Enabled = true;
+            panel10.Enabled = true;
+            panel8.Enabled = true;
+            groupBox3.Enabled = true;
+            closeButton.Enabled = false;
+            //**********************************
             tabPage3.Enabled = false;
 
             dataGridView1.ClearSelection();
@@ -420,7 +428,7 @@ namespace ContactApp
                                 var rows = (from r in dtNew.AsEnumerable() select r).Skip(1);
                                 foreach (DataRow row in rows)
                                 {
-                                    
+
                                     if (!string.IsNullOrEmpty(row[0].ToString()))
                                     {
                                         if (row[0].ToString().Length < 8)
@@ -444,9 +452,9 @@ namespace ContactApp
                                         var resAddr2 = repository.InsertContact(companyID, 1, "", row[5].ToString(), "", "", "", "");
                                         var resWebSite = repository.InsertContact(companyID, 2, row[10].ToString(), "", "", "", "", "");
                                         var resEmail = repository.InsertContact(companyID, 3, row[9].ToString(), "", "", "", "", "");
-                                        
-                                        
-                                        
+
+
+
 
                                         //INSERT NOTES
                                         if (!string.IsNullOrWhiteSpace(row[32].ToString()))
@@ -550,7 +558,7 @@ namespace ContactApp
                                     }
                                 }
 
-                                    string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
+                                string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
 
                                 FillDataGrid(selectednode, null);
 
@@ -622,6 +630,7 @@ namespace ContactApp
             {
                 if (MessageBox.Show("Are You Sure About Save Change?", "Warnning", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+
                     //dataGridView1.Size = new Size(this.Size.Width - 215, this.Size.Height - 100);
                     treeView1.Size = new Size(treeView1.Size.Width, this.Size.Height - 100);
                     tabControl1.Visible = false;
@@ -636,6 +645,7 @@ namespace ContactApp
                     EditContact.Enabled = false;
                     DiscardContact.Enabled = false;
                     SaveContact.Enabled = false;
+
                     bool isSuccess;
                     int apN;
                     bool ap = int.TryParse(textBox8.Text, out apN);
@@ -769,7 +779,8 @@ namespace ContactApp
                             {
                                 groupBox6.Enabled = true;
                                 groupBox3.Enabled = true;
-
+                                tabPage3.Enabled = true;
+                                groupBox7.Enabled = true;
                                 string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
 
                                 FillDataGrid(selectednode, null);
@@ -827,6 +838,7 @@ namespace ContactApp
                 DiscardContact.Enabled = false;
                 SaveContact.Enabled = false;
                 panel3.Visible = false;
+
 
             }
             else
@@ -1234,7 +1246,24 @@ namespace ContactApp
             }
             else
             {
-                FillDataGrid(null, "SELECT [id],[CategoryID], CONVERT(varchar,LastUpdate,101) as LastUpdate,[UniqueID],[LegalName],[DBAName],[USDOTNumber],[ApcantID],[CANumber] FROM [dbo].[Companies] WHERE Deleted='False'");
+                FillDataGrid(null, @"SELECT 
+                                    Companies.[id],
+                                    [CategoryID],
+                                    CONVERT(varchar, LastUpdate, 101) as LastUpdate,
+                                    [UniqueID],
+                                    [LegalName],
+                                    [DBAName],
+                                    [USDOTNumber],
+                                    [ApcantID],
+                                    [CANumber],
+                                    Contacts.Address,
+                                    Contacts.City,
+                                    Contacts.State,
+                                    Contacts.Country
+                                FROM[dbo].[Companies]
+                                left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                WHERE Companies.Deleted = 'False' 
+                                Order By Companies.CreateDate DESC");
 
             }
         }
@@ -1261,7 +1290,23 @@ namespace ContactApp
             DataTable dt;
             if (q == null)
             {
-                string query = "SELECT [id],[CategoryID], CONVERT(varchar,LastUpdate,101) as LastUpdate,[UniqueID],[LegalName],[DBAName],[USDOTNumber],[ApcantID],[CANumber] FROM [dbo].[Companies] WHERE Deleted='False' AND CategoryID IN (" + selectedNodeArray + ")";
+                string query = @"SELECT 
+                                    Companies.[id],
+                                    [CategoryID], 
+                                    CONVERT(varchar,LastUpdate,101) as LastUpdate,
+                                    [UniqueID],
+                                    [LegalName],
+                                    [DBAName],
+                                    [USDOTNumber],
+                                    [ApcantID],
+                                    [CANumber],
+                                    Contacts.Address, 
+                                    Contacts.City,
+                                    Contacts.State,
+                                    Contacts.Country 
+                                FROM [dbo].[Companies] 
+                                left join Contacts on Companies.id = Contacts.CompanyID  and Contacts.Type=0
+                                WHERE Companies.Deleted='False' AND Companies.CategoryID IN (" + selectedNodeArray + ") Order By Companies.CreateDate DESC";
                 dt = repository.SelectAllRunner(query);
             }
             else
@@ -1374,8 +1419,14 @@ namespace ContactApp
 
                 if (dr == DialogResult.Yes)
                 {
-                    var res = repository.DeleteCompanies(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                    foreach (DataGridViewRow record in dataGridView1.SelectedRows)
+                    {
 
+                        var res = repository.DeleteCompanies(record.Cells[0].Value.ToString());
+                    }
+
+                    string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
+                    FillDataGrid(selectednode, null);
 
                 }
             }
@@ -1417,12 +1468,9 @@ namespace ContactApp
             dataGridView2.DataSource = dt;
             dataGridView2.Columns[0].Visible = false;
             dataGridView2.Columns[1].Visible = false;
-            //if (dataGridView2.Columns[2])
-            //{
-            //DataGridViewColumn column2 = dataGridView2.Columns[2];
-            //column2.Width = 20;
-            //dataGridView2.Columns[3].Width = 80;
-   
+            dataGridView2.Columns[2].Width = 300;
+            dataGridView2.Columns[3].Width = 800;
+
         }
         private void FillPNGv()
         {
