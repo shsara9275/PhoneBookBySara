@@ -443,50 +443,50 @@ namespace ContactApp
                                     }
                                     //var phones = row[1].ToString().Split('/');
                                     //var note = row[14].ToString().Split(':');
-                                    var companyID = repository.InsertCompanies(selectedNodeTag, row[2].ToString(), "", row[7].ToString(), row[8].ToString(), Convert.ToInt32(row[6] is DBNull ? 0 : row[6]), 0, row[5].ToString(), false, row[1].ToString(), LastUpdate);
+                                    var companyID = repository.InsertCompanies(selectedNodeTag, row[2].ToString(), "", row[8].ToString(), row[9].ToString(), Convert.ToInt32(row[6] is DBNull ? 0 : row[6]), 0, row[5].ToString(), false, row[1].ToString(), LastUpdate);
 
 
                                     if (companyID != null)
                                     {
-                                        var resAddr = repository.InsertContact(companyID, 0, "", row[4].ToString(), row[7].ToString(), row[6].ToString(), "", row[8].ToString());
-                                        var resAddr2 = repository.InsertContact(companyID, 1, "", row[5].ToString(), "", "", "", "");
-                                        var resWebSite = repository.InsertContact(companyID, 2, row[10].ToString(), "", "", "", "", "");
-                                        var resEmail = repository.InsertContact(companyID, 3, row[9].ToString(), "", "", "", "", "");
+                                        if (!string.IsNullOrWhiteSpace(row[46].ToString()) || !string.IsNullOrWhiteSpace(row[47].ToString()) || !string.IsNullOrWhiteSpace(row[48].ToString()) || !string.IsNullOrWhiteSpace(row[49].ToString())
+                                            || !string.IsNullOrWhiteSpace(row[50].ToString()) || !string.IsNullOrWhiteSpace(row[51].ToString()) || !string.IsNullOrWhiteSpace(row[52].ToString())
+                                            || !string.IsNullOrWhiteSpace(row[53].ToString()) || !string.IsNullOrWhiteSpace(row[54].ToString()))
+                                        {
+                                            var resAddr = repository.InsertContact(companyID, 0, "", row[48].ToString(), row[49].ToString(), row[52].ToString(), row[53].ToString(), row[51].ToString());
+                                        }
 
+                                        //var resAddr2 = repository.InsertContact(companyID, 1, "", row[5].ToString(), "", "", "", "");
 
-
+                                        var resWebSite = repository.InsertContact(companyID, 2, row[60].ToString(), "", "", "", "", "");
+                                        var resEmail = repository.InsertContact(companyID, 3, row[61].ToString(), "", "", "", "", "");
 
                                         //INSERT NOTES
                                         if (!string.IsNullOrWhiteSpace(row[32].ToString()))
                                         {
-                                            var resPhone = repository.InsertNotes(companyID, "", row[32].ToString());
+                                            var resNote = repository.InsertNotes(companyID, "", row[32].ToString());
                                         }
                                         if (!string.IsNullOrWhiteSpace(row[33].ToString()))
                                         {
-                                            var resPhone = repository.InsertNotes(companyID, "", row[33].ToString());
+                                            var resNote = repository.InsertNotes(companyID, "", row[33].ToString());
                                         }
                                         if (!string.IsNullOrWhiteSpace(row[34].ToString()))
                                         {
-                                            var resPhone = repository.InsertNotes(companyID, "", row[34].ToString());
+                                            var resNote = repository.InsertNotes(companyID, "", row[34].ToString());
                                         }
                                         if (!string.IsNullOrWhiteSpace(row[35].ToString()))
                                         {
-                                            var resPhone = repository.InsertNotes(companyID, "", row[35].ToString());
+                                            var resNote = repository.InsertNotes(companyID, "", row[35].ToString());
                                         }
                                         if (!string.IsNullOrWhiteSpace(row[36].ToString()))
                                         {
-                                            var resPhone = repository.InsertNotes(companyID, "", row[36].ToString());
+                                            var resNote = repository.InsertNotes(companyID, "", row[36].ToString());
                                         }
                                         if (!string.IsNullOrWhiteSpace(row[37].ToString()))
                                         {
-                                            var resPhone = repository.InsertNotes(companyID, "", row[37].ToString());
+                                            var resNote = repository.InsertNotes(companyID, "", row[37].ToString());
                                         }
 
                                         //INSERT PHONES
-                                        if (!string.IsNullOrWhiteSpace(row[41].ToString()))
-                                        {
-                                            var phoneNumbber = repository.InsertContact(companyID, 4, row[41].ToString(), "", "", "", "", "");
-                                        }
                                         if (!string.IsNullOrWhiteSpace(row[42].ToString()))
                                         {
                                             var phoneNumbber = repository.InsertContact(companyID, 4, row[42].ToString(), "", "", "", "", "");
@@ -506,44 +506,6 @@ namespace ContactApp
                                             var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
                                         }
 
-                                        //INSERT ADDRESS
-                                        if (!string.IsNullOrWhiteSpace(row[46].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[47].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[48].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[49].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[50].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[51].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[52].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[53].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[54].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-
                                         //INSERT DOCKETNUMBER
                                         if (!string.IsNullOrWhiteSpace(row[3].ToString()))
                                         {
@@ -553,7 +515,6 @@ namespace ContactApp
                                         {
                                             var docket2 = repository.InsertDocketNumber(companyID, row[4].ToString());
                                         }
-
 
                                     }
                                 }
