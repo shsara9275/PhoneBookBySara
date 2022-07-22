@@ -288,6 +288,7 @@ namespace ContactApp
             // 
             // toolStripTextBox1
             // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.toolStripTextBox1.Size = new System.Drawing.Size(0, 28);
@@ -354,6 +355,7 @@ namespace ContactApp
             // 
             // toolStripTextBox2
             // 
+            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(159, 28);
             this.toolStripTextBox2.TextChanged += new System.EventHandler(this.toolStripTextBox2_TextChanged);
@@ -516,7 +518,7 @@ namespace ContactApp
             this.label16.Location = new System.Drawing.Point(37, 113);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(31, 17);
+            this.label16.Size = new System.Drawing.Size(29, 16);
             this.label16.TabIndex = 31;
             this.label16.Text = "City";
             // 
@@ -536,7 +538,7 @@ namespace ContactApp
             this.label9.Location = new System.Drawing.Point(20, 242);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(65, 17);
+            this.label9.Size = new System.Drawing.Size(62, 16);
             this.label9.TabIndex = 28;
             this.label9.Text = "Zip Code";
             // 
@@ -568,7 +570,7 @@ namespace ContactApp
             this.label7.Location = new System.Drawing.Point(32, 156);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 17);
+            this.label7.Size = new System.Drawing.Size(38, 16);
             this.label7.TabIndex = 24;
             this.label7.Text = "State";
             // 
@@ -588,7 +590,7 @@ namespace ContactApp
             this.label8.Location = new System.Drawing.Point(25, 199);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 17);
+            this.label8.Size = new System.Drawing.Size(52, 16);
             this.label8.TabIndex = 25;
             this.label8.Text = "Country";
             // 
@@ -608,7 +610,7 @@ namespace ContactApp
             this.label5.Location = new System.Drawing.Point(12, 27);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 17);
+            this.label5.Size = new System.Drawing.Size(68, 16);
             this.label5.TabIndex = 20;
             this.label5.Text = "Address 1";
             // 
@@ -628,7 +630,7 @@ namespace ContactApp
             this.label6.Location = new System.Drawing.Point(12, 70);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 17);
+            this.label6.Size = new System.Drawing.Size(68, 16);
             this.label6.TabIndex = 21;
             this.label6.Text = "Address 2";
             // 
@@ -690,7 +692,7 @@ namespace ContactApp
             this.label15.Location = new System.Drawing.Point(7, 26);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(106, 17);
+            this.label15.Size = new System.Drawing.Size(101, 16);
             this.label15.TabIndex = 40;
             this.label15.Text = "DocketNumber:";
             // 
@@ -771,7 +773,7 @@ namespace ContactApp
             this.label17.Location = new System.Drawing.Point(21, 64);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(76, 17);
+            this.label17.Size = new System.Drawing.Size(73, 16);
             this.label17.TabIndex = 30;
             this.label17.Text = "CANumber";
             // 
@@ -793,7 +795,7 @@ namespace ContactApp
             this.label13.Location = new System.Drawing.Point(9, 26);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 17);
+            this.label13.Size = new System.Drawing.Size(103, 16);
             this.label13.TabIndex = 26;
             this.label13.Text = "USDOTNumber";
             // 
@@ -827,7 +829,7 @@ namespace ContactApp
             this.label14.Location = new System.Drawing.Point(29, 102);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 17);
+            this.label14.Size = new System.Drawing.Size(62, 16);
             this.label14.TabIndex = 9;
             this.label14.Text = "ApcantID";
             // 
@@ -891,7 +893,7 @@ namespace ContactApp
             this.label21.Location = new System.Drawing.Point(15, 33);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(81, 17);
+            this.label21.Size = new System.Drawing.Size(77, 16);
             this.label21.TabIndex = 26;
             this.label21.Text = "LastUpdate";
             // 
@@ -921,7 +923,7 @@ namespace ContactApp
             this.label12.Location = new System.Drawing.Point(20, 73);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 17);
+            this.label12.Size = new System.Drawing.Size(63, 16);
             this.label12.TabIndex = 23;
             this.label12.Text = "UniqueID";
             // 
@@ -931,7 +933,7 @@ namespace ContactApp
             this.label3.Location = new System.Drawing.Point(15, 110);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 17);
+            this.label3.Size = new System.Drawing.Size(78, 16);
             this.label3.TabIndex = 9;
             this.label3.Text = "LegalName";
             // 
@@ -941,7 +943,7 @@ namespace ContactApp
             this.label4.Location = new System.Drawing.Point(17, 145);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 17);
+            this.label4.Size = new System.Drawing.Size(72, 16);
             this.label4.TabIndex = 10;
             this.label4.Text = "DBAName";
             // 
@@ -978,7 +980,7 @@ namespace ContactApp
             this.label2.Location = new System.Drawing.Point(25, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 20;
             this.label2.Text = "Website";
             // 
@@ -998,7 +1000,7 @@ namespace ContactApp
             this.label1.Location = new System.Drawing.Point(35, 68);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 17);
+            this.label1.Size = new System.Drawing.Size(41, 16);
             this.label1.TabIndex = 21;
             this.label1.Text = "Email";
             // 
@@ -1150,7 +1152,7 @@ namespace ContactApp
             this.label19.Location = new System.Drawing.Point(31, 32);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(58, 17);
+            this.label19.Size = new System.Drawing.Size(55, 16);
             this.label19.TabIndex = 40;
             this.label19.Text = "Number";
             // 
@@ -1211,7 +1213,7 @@ namespace ContactApp
             this.label11.Location = new System.Drawing.Point(39, 71);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 17);
+            this.label11.Size = new System.Drawing.Size(55, 16);
             this.label11.TabIndex = 32;
             this.label11.Text = "Content:";
             // 
@@ -1221,7 +1223,7 @@ namespace ContactApp
             this.label10.Location = new System.Drawing.Point(48, 39);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 17);
+            this.label10.Size = new System.Drawing.Size(33, 16);
             this.label10.TabIndex = 31;
             this.label10.Text = "Title";
             // 
@@ -1304,7 +1306,7 @@ namespace ContactApp
             this.label18.Location = new System.Drawing.Point(33, 6);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 17);
+            this.label18.Size = new System.Drawing.Size(82, 16);
             this.label18.TabIndex = 30;
             this.label18.Text = "Saving Path:";
             // 

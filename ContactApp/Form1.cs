@@ -241,8 +241,15 @@ namespace ContactApp
             panel4.Enabled = true;
             maskedTextBox2.Enabled = true;
             maskedTextBox2.ReadOnly = false;
-            groupBox6.Enabled = false;
-            groupBox3.Enabled = false;
+
+            //********************************
+            //groupBox6.Enabled = false;
+            groupBox6.Enabled = true;
+
+            //groupBox3.Enabled = false;
+            groupBox3.Enabled = true;
+            //********************************
+
             tabControl1.Visible = true;
             //*********************************
             //tabPage1.Enabled = true;
@@ -732,6 +739,26 @@ namespace ContactApp
                                 var resAddr2 = repository.InsertContact(CompanyID, 1, "", textBox11.Text, "", "", "", "");
                                 var resWebSite = repository.InsertContact(CompanyID, 2, textBox4.Text, "", "", "", "", "");
                                 var resEmail = repository.InsertContact(CompanyID, 3, textBox5.Text, "", "", "", "", "");
+
+                                foreach (DataGridViewRow row in dataGridView4.Rows)
+                                {
+                                    var docketNumber = repository.InsertDocketNumber(CompanyID, row.Cells["value"].Value.ToString());
+
+                                }
+                                
+                                foreach (DataGridViewRow row in dataGridView3.Rows)
+                                {
+                                    
+                                    var phoneNumber = repository.InsertContact(CompanyID, 5, row.Cells["value"].Value.ToString(), "", "", "", "", "");
+
+                                }
+                                
+                                foreach (DataGridViewRow row in dataGridView5.Rows)
+                                {
+                                    var faxNumber = repository.InsertContact(CompanyID, 4, row.Cells["value"].Value.ToString(), "", "", "", "", "");
+
+                                }
+
                                 isSuccess = true;
                             }
 
@@ -1048,7 +1075,9 @@ namespace ContactApp
                 panel11.Enabled = true;
                 panel10.Enabled = true;
                 panel8.Enabled = true;
+                panel9.Enabled = true;
                 groupBox3.Enabled = true;
+                maskedTextBox1.Enabled = true;
                 closeButton.Enabled = false;
                 //******************************
                 tabPage3.Enabled = true;
@@ -1276,10 +1305,13 @@ namespace ContactApp
                 dt = repository.SelectAllRunner(query);
             }
             dataGridView1.DataSource = dt;
-            dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[1].Visible = false;
-            dataGridView1.ClearSelection();
-
+            if (dt.Rows.Count > 0)
+            {
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.ClearSelection();
+            }
+            
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -1393,27 +1425,44 @@ namespace ContactApp
             }
         }
 
+        
+
         private void button9_Click(object sender, EventArgs e)
         {
-
-            //if (MessageBox.Show("Are You Sure About Add Item?", "Warnning", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //{
-
+            DataTable dt2;
             if (docketNumbermaskedTextBox.Text != null && docketNumbermaskedTextBox.Text.Trim().Length > 1)
             {
-                if (repository.InsertDocketNumber(CompanyID, docketNumbermaskedTextBox.Text))
+                if (dataGridView4.Rows.Count > 0 )
                 {
-                    FillDNGv();
-                    docketNumbermaskedTextBox.Text = "";
+                     dt2 = (DataTable)dataGridView4.DataSource;
+                   
+                    var dr3 = dt2.NewRow();
+                    dr3["value"] = docketNumbermaskedTextBox.Text;
+
+                    dt2.Rows.Add(dr3);
+
                 }
 
+                else
+                {
+                     dt2 = new DataTable();
+                    dt2.Columns.Add("value");
+
+                    var dr3 = dt2.NewRow();
+                    dr3["value"] = docketNumbermaskedTextBox.Text;
+
+                    dt2.Rows.Add(dr3);
+
+                }
+                dataGridView4.DataSource = dt2;
+                docketNumbermaskedTextBox.Text = "";
 
             }
             else
             {
                 MessageBox.Show("Docketnumber can't be empty", "Warnning", MessageBoxButtons.OKCancel);
             }
-            //}
+
         }
 
         private void FillDNGv()
@@ -1466,26 +1515,64 @@ namespace ContactApp
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show("Are You Sure About Add Item?", "Warnning", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //{
             if (maskedTextBox1.Text.Replace('(', ' ').Replace(')', ' ').Replace('-', ' ').Trim().Length > 0)
             {
                 bool resPhone = false;
                 if (comboBox1.SelectedIndex == 1)
                 {
-                    resPhone = repository.InsertContact(CompanyID, 4, maskedTextBox1.Text, "", "", "", "", "");
-                    FillPNGv();
+                    if (dataGridView3.Rows.Count > 0)
+                    {
+                        DataTable dt2 = (DataTable)dataGridView3.DataSource;
+
+                        var dr3 = dt2.NewRow();
+                        dr3["value"] = maskedTextBox1.Text;
+
+                        dt2.Rows.Add(dr3);
+                        dataGridView3.DataSource = dt2;
+
+                    }
+
+                    else
+                    {
+                        DataTable dt2 = new DataTable();
+                        dt2.Columns.Add("value");
+
+                        var dr3 = dt2.NewRow();
+                        dr3["value"] = maskedTextBox1.Text;
+
+                        dt2.Rows.Add(dr3);
+                        dataGridView3.DataSource = dt2;
+
+                    }
                 }
                 else if (comboBox1.SelectedIndex == 0)
                 {
-                    resPhone = repository.InsertContact(CompanyID, 5, maskedTextBox1.Text, "", "", "", "", "");
-                    FillPNGv();
+                    if (dataGridView5.Rows.Count > 0)
+                    {
+                        DataTable dt2 = (DataTable)dataGridView5.DataSource;
+
+                        var dr3 = dt2.NewRow();
+                        dr3["value"] = maskedTextBox1.Text;
+
+                        dt2.Rows.Add(dr3);
+                        dataGridView5.DataSource = dt2;
+                    }
+
+                    else
+                    {
+                        DataTable dt2 = new DataTable();
+                        dt2.Columns.Add("value");
+
+                        var dr3 = dt2.NewRow();
+                        dr3["value"] = maskedTextBox1.Text;
+
+                        dt2.Rows.Add(dr3);
+                        dataGridView5.DataSource = dt2;
+                    }
 
                 }
-                if (resPhone)
-                {
                     maskedTextBox1.Text = "";
-                }
+
             }
             else
             {
@@ -1513,7 +1600,7 @@ namespace ContactApp
         {
             if (dataGridView4.CurrentRow != null)
             {
-                docketNumbermaskedTextBox.Text = dataGridView4.CurrentRow.Cells[2].Value.ToString();
+                docketNumbermaskedTextBox.Text = dataGridView4.CurrentRow.Cells["value"].Value.ToString();
 
             }
         }
