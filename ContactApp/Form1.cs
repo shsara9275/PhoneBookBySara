@@ -34,6 +34,10 @@ namespace ContactApp
         public DataTable param;
         string LastUpdate;
 
+        private int PageSize = 50;
+        private int CurrentPageIndex = 1;
+        private int TotalPage = 0;
+
         public mainWindow()
         {
             InitializeComponent();
@@ -121,7 +125,6 @@ namespace ContactApp
 
             treeView1.Nodes.Add(root);
         }
-
 
         private void PopulateTreeView(DataTable CategoryDT, string ParentID, TreeNode treeNode)
         {
@@ -745,14 +748,14 @@ namespace ContactApp
                                     var docketNumber = repository.InsertDocketNumber(CompanyID, row.Cells["value"].Value.ToString());
 
                                 }
-                                
+
                                 foreach (DataGridViewRow row in dataGridView3.Rows)
                                 {
-                                    
+
                                     var phoneNumber = repository.InsertContact(CompanyID, 5, row.Cells["value"].Value.ToString(), "", "", "", "", "");
 
                                 }
-                                
+
                                 foreach (DataGridViewRow row in dataGridView5.Rows)
                                 {
                                     var faxNumber = repository.InsertContact(CompanyID, 4, row.Cells["value"].Value.ToString(), "", "", "", "", "");
@@ -862,7 +865,6 @@ namespace ContactApp
             }
         }
 
-
         private void SaveContact2_Click(object sender, EventArgs e)
         {
 
@@ -912,6 +914,8 @@ namespace ContactApp
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == dataGridView1.ColumnCount - 1 || e.ColumnIndex == dataGridView1.ColumnCount - 2) return;
+
             if (dataGridView1.CurrentRow != null)
             {
                 //jahate namayeshe recorde entekhabi balaye girid
@@ -1052,6 +1056,20 @@ namespace ContactApp
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
+            {
+
+             
+                //DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                //dataGridView1.CurrentCell = cell;
+                //cell.ReadOnly = false;
+                //dataGridView1.BeginEdit(true);
+
+                return;
+            }
+         
+
             if (dataGridView1.CurrentRow != null)
             {
                 //jahate namayeshe recorde entekhabi balaye girid
@@ -1188,9 +1206,7 @@ namespace ContactApp
         {
             //فعال شدن دکمه ادد دستی
             if (treeView1.SelectedNode.Level >= 2)
-            //if (selectedNodeName == "1")
             {
-
                 AddContact.Enabled = true;
             }
             else
@@ -1236,7 +1252,34 @@ namespace ContactApp
             }
             else
             {
-                FillDataGrid(null, @"SELECT 
+
+                string query_Count = $@"SELECT count(Companies.ID)
+                                        FROM[dbo].[Companies]
+                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                        WHERE Companies.Deleted = 'False'";
+                DataTable dt = repository.SelectAllRunner(query_Count);
+                int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                this.TotalPage = rowCount / PageSize;
+                if (rowCount % PageSize > 0)
+                {
+                    this.TotalPage += 1;
+                }
+
+
+                string query = GenerateQuery(1);
+
+
+                FillDataGrid(null, query);
+
+            }
+        }
+
+        public string GenerateQuery(int page)
+        {
+            string query; 
+            if (page == 1)
+            {
+                 query = $@"SELECT  TOP {PageSize}
                                     Companies.[id],
                                     [CategoryID],
                                     CONVERT(varchar, LastUpdate, 101) as LastUpdate,
@@ -1249,13 +1292,48 @@ namespace ContactApp
                                     Contacts.Address,
                                     Contacts.City,
                                     Contacts.State,
-                                    Contacts.Country
+                                    Contacts.Country,
+                                     phones ,
+									 faxes
                                 FROM[dbo].[Companies]
                                 left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
                                 WHERE Companies.Deleted = 'False' 
-                                Order By Companies.CreateDate DESC");
-
+                                Order By Companies.CreateDate DESC";
             }
+            else
+            {
+                int PreviouspageLimit = (page - 1) * PageSize;
+
+                query = $@"SELECT TOP {PageSize}
+                                            Companies.[id],
+                                                            [CategoryID],
+                                                            CONVERT(varchar, LastUpdate, 101) as LastUpdate,
+                                                            [UniqueID],
+                                                            [LegalName],
+                                                            [DBAName],
+                                                            [USDOTNumber],
+                                                            [ApcantID],
+                                                            [CANumber],
+                                                            Contacts.Address,
+                                                            Contacts.City,
+                                                            Contacts.State,
+                                                            Contacts.Country,
+                                                             phones ,
+									                         faxes
+                                                        FROM[dbo].[Companies]
+                                            left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type = 0
+                                                        WHERE Companies.[id] not in(
+                                                                                    SELECT top {PreviouspageLimit}
+                                            Companies.[id]
+                                                                                    FROM[dbo].[Companies]
+                                            left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type = 0
+                                                                                    WHERE Companies.Deleted = 'False'
+								                        )
+								                         and Companies.Deleted = 'False'
+                                                        Order By Companies.CreateDate DESC";
+            }
+
+            return query;
         }
 
         private string getCategoryAndChild(string CategoryID)
@@ -1280,7 +1358,7 @@ namespace ContactApp
             DataTable dt;
             if (q == null)
             {
-                string query = @"SELECT 
+                string query = $@"SELECT 
                                     Companies.[id],
                                     [CategoryID], 
                                     CONVERT(varchar,LastUpdate,101) as LastUpdate,
@@ -1293,10 +1371,14 @@ namespace ContactApp
                                     Contacts.Address, 
                                     Contacts.City,
                                     Contacts.State,
-                                    Contacts.Country 
+                                    Contacts.Country ,
+                                    phones ,
+								    faxes
                                 FROM [dbo].[Companies] 
                                 left join Contacts on Companies.id = Contacts.CompanyID  and Contacts.Type=0
-                                WHERE Companies.Deleted='False' AND Companies.CategoryID IN (" + selectedNodeArray + ") Order By Companies.CreateDate DESC";
+                                WHERE Companies.Deleted='False' AND Companies.CategoryID IN ( { selectedNodeArray } ) 
+                                Order By Companies.CreateDate DESC
+                                OFFSET 50 ROWS FETCH NEXT 100 ROWS ONLY";
                 dt = repository.SelectAllRunner(query);
             }
             else
@@ -1311,7 +1393,7 @@ namespace ContactApp
                 dataGridView1.Columns[1].Visible = false;
                 dataGridView1.ClearSelection();
             }
-            
+
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -1425,17 +1507,15 @@ namespace ContactApp
             }
         }
 
-        
-
         private void button9_Click(object sender, EventArgs e)
         {
             DataTable dt2;
             if (docketNumbermaskedTextBox.Text != null && docketNumbermaskedTextBox.Text.Trim().Length > 1)
             {
-                if (dataGridView4.Rows.Count > 0 )
+                if (dataGridView4.Rows.Count > 0)
                 {
-                     dt2 = (DataTable)dataGridView4.DataSource;
-                   
+                    dt2 = (DataTable)dataGridView4.DataSource;
+
                     var dr3 = dt2.NewRow();
                     dr3["value"] = docketNumbermaskedTextBox.Text;
 
@@ -1445,7 +1525,7 @@ namespace ContactApp
 
                 else
                 {
-                     dt2 = new DataTable();
+                    dt2 = new DataTable();
                     dt2.Columns.Add("value");
 
                     var dr3 = dt2.NewRow();
@@ -1571,7 +1651,7 @@ namespace ContactApp
                     }
 
                 }
-                    maskedTextBox1.Text = "";
+                maskedTextBox1.Text = "";
 
             }
             else
@@ -1604,6 +1684,7 @@ namespace ContactApp
 
             }
         }
+
         private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView5.ClearSelection();
@@ -1636,6 +1717,7 @@ namespace ContactApp
 
             }
         }
+
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView2.CurrentRow != null)
@@ -1740,7 +1822,6 @@ namespace ContactApp
 
         }
 
-
         private void maskedTextBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && PNEditMode)
@@ -1824,6 +1905,97 @@ namespace ContactApp
             DiscardContact.Enabled = false;
             SaveContact.Enabled = false;
             panel3.Visible = false;
+        }
+
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
+            for (int i = 0; i < dataGridView1.ColumnCount-2; i++)
+            {
+                dataGridView1.Columns[i].ReadOnly = true;
+            }
+
+
+            if (dataGridView1.Columns["AllPhone"] != null || dataGridView1.Columns["AllFax"] != null)
+            {
+                return;
+            }
+            else
+            {
+                DataGridViewComboBoxColumn phoneColumn = new DataGridViewComboBoxColumn();
+                phoneColumn.Name = "AllPhone";
+                phoneColumn.HeaderText = "Phone";
+                phoneColumn.ReadOnly = false;
+                phoneColumn.FlatStyle = FlatStyle.Standard;
+
+                DataGridViewComboBoxColumn faxesColumn = new DataGridViewComboBoxColumn();
+                faxesColumn.Name = "AllFax";
+                faxesColumn.HeaderText = "Fax";
+                faxesColumn.ReadOnly = false;
+                faxesColumn.FlatStyle = FlatStyle.Standard;
+
+
+
+                //phoneColumn.Items.AddRange(new string[] { "1", "12" });
+
+                dataGridView1.Columns.Add(phoneColumn);
+                dataGridView1.Columns.Add(faxesColumn);
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    //Phone
+                    //خود سلول کمبوباکس
+                    var comboCell = (DataGridViewComboBoxCell)row.Cells[dataGridView1.Columns.Count - 2];
+                    //کل ردیف
+                    DataRowView dr = (DataRowView)row.DataBoundItem;
+                    //comboCell.Items.AddRange(Convert.ToString(dr.Row["phones"]).Split(','));
+                    comboCell.Items.AddRange(Convert.ToString(row.Cells["phones"].Value).Split(','));
+                    
+
+                    //Fax
+                    var faxCell = (DataGridViewComboBoxCell)row.Cells[dataGridView1.Columns.Count - 1];
+                    DataRowView fax_Dr = (DataRowView)row.DataBoundItem;
+                    faxCell.Items.AddRange(Convert.ToString(row.Cells["faxes"].Value).Split(','));
+
+                }
+
+                //dataGridView1.Rows[0].Cells[dataGridView1.ColumnCount - 1].ReadOnly = false;
+                dataGridView1.Columns["phones"].Visible = false;
+                dataGridView1.Columns["faxes"].Visible = false;
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Tab && dataGridView1.CurrentCell.ColumnIndex == dataGridView1.ColumnCount-1)
+            //{
+            //    e.Handled = true;
+            //    DataGridViewCell cell = dataGridView1.Rows[0].Cells[0];
+            //    dataGridView1.CurrentCell = cell;
+            //    dataGridView1.BeginEdit(true);
+            //}
+        }
+
+        private void nextButton_Click(object sender, EventArgs e)
+        {
+            if (this.CurrentPageIndex < this.TotalPage)
+            {
+                this.CurrentPageIndex++;
+                string query = GenerateQuery(CurrentPageIndex);
+                FillDataGrid(null, query);
+
+            }
+        }
+
+        private void preButton_Click(object sender, EventArgs e)
+        {
+            if (this.CurrentPageIndex < this.TotalPage)
+            {
+                this.CurrentPageIndex--;
+                string query = GenerateQuery(CurrentPageIndex);
+                FillDataGrid(null, query);
+
+            }
         }
     }
 }
