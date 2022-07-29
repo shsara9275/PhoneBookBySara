@@ -26,6 +26,7 @@ namespace ContactApp
         string selectedNodeName;
         string selectedNodeParentName;
         string selectedNodePhoneBookTag;
+        string selectedTreeNode;
         string CompanyID;
         string emailID;
         string webID;
@@ -41,6 +42,7 @@ namespace ContactApp
         public mainWindow()
         {
             InitializeComponent();
+            Application.DoEvents();
             repository = new ContanctsRepository();
             treeView1.NodeMouseClick += (sender, args) => treeView1.SelectedNode = args.Node;
 
@@ -51,8 +53,9 @@ namespace ContactApp
             dr3["id"] = "1";
             dr3["note_name"] = "test";
             dt2.Rows.Add(dr3);
-
+            Application.DoEvents();
             dataGridView2.DataSource = dt2;
+            Application.DoEvents();
 
             this.MinimumSize = new Size(890, 610);
 
@@ -171,7 +174,7 @@ namespace ContactApp
 
         private void filltreeview()
         {
-
+            Application.DoEvents();
             treeView1.BeginUpdate();
             treeView1.Nodes.Clear();
 
@@ -179,7 +182,9 @@ namespace ContactApp
             mainNode.Name = "mainNode";
             mainNode.Text = "Main";
             mainNode.Tag = "mainNode";
+            Application.DoEvents();
             DataTable PhoneBooks = repository.SelectAllPhoneBook();
+            Application.DoEvents();
             foreach (DataRow row in PhoneBooks.Rows)
             {
                 TreeNode child = new TreeNode
@@ -531,8 +536,27 @@ namespace ContactApp
 
                                 string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
 
-                                FillDataGrid(selectednode, null);
+                                /*************************************************************************/
+                                string query_Count = $@"SELECT count(Companies.ID)
+                                        FROM[dbo].[Companies]
+                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                        WHERE Companies.Deleted = 'False'";
+                                DataTable dt = repository.SelectAllRunner(query_Count);
+                                int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                                this.TotalPage = rowCount / PageSize;
+                                if (rowCount % PageSize > 0)
+                                {
+                                    this.TotalPage += 1;
+                                }
 
+
+                                string query = GenerateQueryNodes(1,selectednode);
+
+
+                                //FillDataGrid(null, query);
+
+                                FillDataGridNodes(selectednode, query);
+                                /**************************************************************************/
                                 MessageBox.Show("contact Add Secssesfuly ", "Sucssed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
@@ -676,7 +700,33 @@ namespace ContactApp
                     {
                         string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
 
-                        FillDataGrid(selectednode, null);
+
+                        /*************************************************************************/
+                        string query_Count = $@"SELECT count(Companies.ID)
+                                        FROM[dbo].[Companies]
+                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                        WHERE Companies.Deleted = 'False'";
+                        DataTable dt = repository.SelectAllRunner(query_Count);
+                        int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                        this.TotalPage = rowCount / PageSize;
+                        if (rowCount % PageSize > 0)
+                        {
+                            this.TotalPage += 1;
+                        }
+
+
+                        string query = GenerateQueryNodes(1,selectednode);
+
+
+                        //FillDataGrid(null, query);
+
+                        FillDataGridNodes(selectednode, query);
+                        /**************************************************************************/
+
+
+
+
+                        //FillDataGrid(selectednode, null);
 
                         MessageBox.Show("Contact Update Secssesfuly ", "Sucssed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -774,7 +824,31 @@ namespace ContactApp
                                 groupBox7.Enabled = true;
                                 string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
 
-                                FillDataGrid(selectednode, null);
+                                /*************************************************************************/
+                                string query_Count = $@"SELECT count(Companies.ID)
+                                        FROM[dbo].[Companies]
+                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                        WHERE Companies.Deleted = 'False'";
+                                DataTable dt = repository.SelectAllRunner(query_Count);
+                                int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                                this.TotalPage = rowCount / PageSize;
+                                if (rowCount % PageSize > 0)
+                                {
+                                    this.TotalPage += 1;
+                                }
+
+
+                                string query = GenerateQueryNodes(1,selectednode);
+
+
+                                //FillDataGrid(null, query);
+
+                                FillDataGridNodes(selectednode, query);
+                                /**************************************************************************/
+
+
+
+                                //FillDataGrid(selectednode, null);
 
                                 MessageBox.Show("contact Add Secssesfuly ", "Sucssed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -1204,6 +1278,10 @@ namespace ContactApp
 
         public void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            
+
+            dataGridView1.Columns.Clear();
+
             //فعال شدن دکمه ادد دستی
             if (treeView1.SelectedNode.Level >= 2)
             {
@@ -1213,6 +1291,8 @@ namespace ContactApp
             {
                 AddContact.Enabled = false;
             }
+
+            selectedTreeNode = treeView1.SelectedNode.Text;
 
             if (treeView1.SelectedNode.Text != "Main")
             {
@@ -1226,7 +1306,33 @@ namespace ContactApp
                 {
                     textBox19.Text = treeView1.SelectedNode.FullPath.ToString();
                     string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
-                    FillDataGrid(selectednode, null);
+
+
+                    /*************************************************************************/
+                    string query_Count = $@"SELECT 
+                                    count([Companies].id)
+									FROM [dbo].[Companies] 
+                                left join Contacts on Companies.id = Contacts.CompanyID  and Contacts.Type=0
+                                WHERE Companies.Deleted='False' AND Companies.CategoryID IN ( {selectednode} )";
+                    DataTable dt = repository.SelectAllRunner(query_Count);
+                    int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                    this.TotalPage = rowCount / PageSize;
+                    if (rowCount % PageSize > 0)
+                    {
+                        this.TotalPage += 1;
+                    }
+
+
+                    string query = GenerateQueryNodes(1,selectednode);
+
+
+                    //FillDataGrid(null, query);
+
+                    FillDataGridNodes(selectednode, query);
+                    /**************************************************************************/
+
+
+                    //FillDataGrid(selectednode, null);
 
                 }
                 else if (treeView1.SelectedNode.Text != "\U00002795" && treeView1.SelectedNode.Name != "1")
@@ -1243,7 +1349,33 @@ namespace ContactApp
                             selectednode = string.Join(", ", NodeArray);
 
                         }
-                        FillDataGrid(selectednode, null);
+
+
+                        /*************************************************************************/
+                        string query_Count = $@"SELECT count(Companies.ID)
+                                        FROM[dbo].[Companies]
+                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                        WHERE Companies.Deleted = 'False'";
+                        DataTable dt = repository.SelectAllRunner(query_Count);
+                        int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                        this.TotalPage = rowCount / PageSize;
+                        if (rowCount % PageSize > 0)
+                        {
+                            this.TotalPage += 1;
+                        }
+
+
+                        string query = GenerateQueryNodes(1,selectednode);
+
+
+                        //FillDataGrid(null, query);
+
+                        FillDataGridNodes(selectednode, query);
+                        /**************************************************************************/
+
+
+
+                        //FillDataGrid(selectednode, null);
                     }
                 }
 
@@ -1328,6 +1460,7 @@ namespace ContactApp
                                                                                     FROM[dbo].[Companies]
                                             left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type = 0
                                                                                     WHERE Companies.Deleted = 'False'
+                                                                                    Order By Companies.CreateDate DESC
 								                        )
 								                         and Companies.Deleted = 'False'
                                                         Order By Companies.CreateDate DESC";
@@ -1335,6 +1468,71 @@ namespace ContactApp
 
             return query;
         }
+
+        public string GenerateQueryNodes(int page, string selectedNodeArray)
+        {
+            string query;
+            if (page == 1)
+            {
+                query = $@"SELECT Top {PageSize}
+                                    Companies.[id],
+                                    [CategoryID], 
+                                    CONVERT(varchar,LastUpdate,101) as LastUpdate,
+                                    [UniqueID],
+                                    [LegalName],
+                                    [DBAName],
+                                    [USDOTNumber],
+                                    [ApcantID],
+                                    [CANumber],
+                                    Contacts.Address, 
+                                    Contacts.City,
+                                    Contacts.State,
+                                    Contacts.Country ,
+                                    phones ,
+								    faxes
+                                FROM [dbo].[Companies] 
+                                left join Contacts on Companies.id = Contacts.CompanyID  and Contacts.Type=0
+                                WHERE Companies.Deleted='False' AND Companies.CategoryID IN ( {selectedNodeArray} ) 
+                                Order By Companies.CreateDate DESC";
+            }
+            else
+            {
+                int PreviouspageLimit = (page - 1) * PageSize;
+
+                query = $@"SELECT TOP {PageSize}
+                                            Companies.[id],
+                                                            [CategoryID],
+                                                            CONVERT(varchar, LastUpdate, 101) as LastUpdate,
+                                                            [UniqueID],
+                                                            [LegalName],
+                                                            [DBAName],
+                                                            [USDOTNumber],
+                                                            [ApcantID],
+                                                            [CANumber],
+                                                            Contacts.Address,
+                                                            Contacts.City,
+                                                            Contacts.State,
+                                                            Contacts.Country,
+                                                             phones ,
+									                         faxes
+                                                        FROM[dbo].[Companies]
+                                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type = 0
+                                                        WHERE Companies.[id] not in(
+                                                                                    SELECT top {PreviouspageLimit}
+                                                                                    Companies.[id]
+                                                                                    FROM [dbo].[Companies] 
+                                                                                    left join Contacts on Companies.id = Contacts.CompanyID  and Contacts.Type=0
+                                                                                    WHERE Companies.Deleted='False' AND Companies.CategoryID IN ( {selectedNodeArray} ) 
+                                                                                    Order By Companies.CreateDate DESC
+								                                                    )
+								                         AND Companies.Deleted = 'False'
+                                                         AND Companies.CategoryID IN ( {selectedNodeArray} ) 
+                                                        Order By Companies.CreateDate DESC";
+            }
+
+            return query;
+        }
+
 
         private string getCategoryAndChild(string CategoryID)
         {
@@ -1377,8 +1575,7 @@ namespace ContactApp
                                 FROM [dbo].[Companies] 
                                 left join Contacts on Companies.id = Contacts.CompanyID  and Contacts.Type=0
                                 WHERE Companies.Deleted='False' AND Companies.CategoryID IN ( { selectedNodeArray } ) 
-                                Order By Companies.CreateDate DESC
-                                OFFSET 50 ROWS FETCH NEXT 100 ROWS ONLY";
+                                Order By Companies.CreateDate DESC";
                 dt = repository.SelectAllRunner(query);
             }
             else
@@ -1386,6 +1583,24 @@ namespace ContactApp
                 string query = q;
                 dt = repository.SelectAllRunner(query);
             }
+            dataGridView1.DataSource = dt;
+            if (dt.Rows.Count > 0)
+            {
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.ClearSelection();
+            }
+
+        }
+
+        private void FillDataGridNodes(string selectedNodeArray, string q)
+        {
+            DataTable dt;
+            
+                
+                dt = repository.SelectAllRunner(q);
+            
+            
             dataGridView1.DataSource = dt;
             if (dt.Rows.Count > 0)
             {
@@ -1477,8 +1692,31 @@ namespace ContactApp
 
                     }
                     string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
+                    /*************************************************************************/
+                    string query_Count = $@"SELECT count(Companies.ID)
+                                        FROM[dbo].[Companies]
+                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                        WHERE Companies.Deleted = 'False'";
+                    DataTable dt = repository.SelectAllRunner(query_Count);
+                    int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                    this.TotalPage = rowCount / PageSize;
+                    if (rowCount % PageSize > 0)
+                    {
+                        this.TotalPage += 1;
+                    }
 
-                    FillDataGrid(selectednode, null);
+
+                    string query = GenerateQueryNodes(1,selectednode);
+
+
+                    //FillDataGrid(null, query);
+
+                    FillDataGridNodes(selectednode, query);
+                    /**************************************************************************/
+
+
+
+                    //FillDataGrid(selectednode, null);
                     filltreeview();
 
 
@@ -1501,7 +1739,32 @@ namespace ContactApp
                     }
 
                     string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
-                    FillDataGrid(selectednode, null);
+
+
+                    /*************************************************************************/
+                    string query_Count = $@"SELECT count(Companies.ID)
+                                        FROM[dbo].[Companies]
+                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                        WHERE Companies.Deleted = 'False'";
+                    DataTable dt = repository.SelectAllRunner(query_Count);
+                    int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                    this.TotalPage = rowCount / PageSize;
+                    if (rowCount % PageSize > 0)
+                    {
+                        this.TotalPage += 1;
+                    }
+
+
+                    string query = GenerateQueryNodes(1,selectednode);
+
+
+                    //FillDataGrid(null, query);
+
+                    FillDataGridNodes(selectednode, query);
+                    /**************************************************************************/
+
+
+                    //FillDataGrid(selectednode, null);
 
                 }
             }
@@ -1916,12 +2179,12 @@ namespace ContactApp
             }
 
 
-            if (dataGridView1.Columns["AllPhone"] != null || dataGridView1.Columns["AllFax"] != null)
-            {
-                return;
-            }
-            else
-            {
+            //if (dataGridView1.Columns["AllPhone"] != null || dataGridView1.Columns["AllFax"] != null)
+            //{
+            //    return;
+            //}
+            //else
+            //{
                 DataGridViewComboBoxColumn phoneColumn = new DataGridViewComboBoxColumn();
                 phoneColumn.Name = "AllPhone";
                 phoneColumn.HeaderText = "Phone";
@@ -1962,7 +2225,7 @@ namespace ContactApp
                 //dataGridView1.Rows[0].Cells[dataGridView1.ColumnCount - 1].ReadOnly = false;
                 dataGridView1.Columns["phones"].Visible = false;
                 dataGridView1.Columns["faxes"].Visible = false;
-            }
+            //}
         }
 
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
@@ -1980,9 +2243,20 @@ namespace ContactApp
         {
             if (this.CurrentPageIndex < this.TotalPage)
             {
+                dataGridView1.Columns.Clear();
                 this.CurrentPageIndex++;
-                string query = GenerateQuery(CurrentPageIndex);
-                FillDataGrid(null, query);
+                string query;
+
+                if (selectedTreeNode != "Main")
+                {
+                    string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
+                    query = GenerateQueryNodes(CurrentPageIndex, selectednode);
+                    FillDataGridNodes(selectednode, query);
+                }
+                else {
+                    query = GenerateQuery(CurrentPageIndex);
+                    FillDataGrid(null, query);
+                }
 
             }
         }
@@ -1991,9 +2265,21 @@ namespace ContactApp
         {
             if (this.CurrentPageIndex < this.TotalPage)
             {
+                dataGridView1.Columns.Clear();
                 this.CurrentPageIndex--;
-                string query = GenerateQuery(CurrentPageIndex);
-                FillDataGrid(null, query);
+                string query;
+
+                if (selectedTreeNode != "Main")
+                {
+                    string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
+                    query = GenerateQueryNodes(CurrentPageIndex, selectednode);
+                    FillDataGridNodes(selectednode, query);
+                }
+                else
+                {
+                    query = GenerateQuery(CurrentPageIndex);
+                    FillDataGrid(null, query);
+                }
 
             }
         }
