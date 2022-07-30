@@ -1278,7 +1278,8 @@ namespace ContactApp
 
         public void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            
+
+            SetLoading(true); 
 
             dataGridView1.Columns.Clear();
 
@@ -1403,6 +1404,27 @@ namespace ContactApp
 
                 FillDataGrid(null, query);
 
+            }
+            SetLoading(false);
+        }
+
+        private void SetLoading(bool displayLoader)
+        {
+            if (displayLoader)
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    pictureBox1.Visible = true;
+                    this.Cursor = Cursors.WaitCursor;
+                });
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    pictureBox1.Visible = false;
+                    this.Cursor = Cursors.Default;
+                });
             }
         }
 
@@ -1532,7 +1554,6 @@ namespace ContactApp
 
             return query;
         }
-
 
         private string getCategoryAndChild(string CategoryID)
         {

@@ -37,22 +37,14 @@ namespace ContactApp
             this.addNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.AddContact = new System.Windows.Forms.ToolStripButton();
-            this.EditContact = new System.Windows.Forms.ToolStripButton();
-            this.DeleteContact = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.SaveContact = new System.Windows.Forms.ToolStripButton();
-            this.DiscardContact = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.ImportExel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.sendNoteToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -89,7 +81,6 @@ namespace ContactApp
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.closeButton = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -139,6 +130,16 @@ namespace ContactApp
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.AddContact = new System.Windows.Forms.ToolStripButton();
+            this.EditContact = new System.Windows.Forms.ToolStripButton();
+            this.DeleteContact = new System.Windows.Forms.ToolStripButton();
+            this.SaveContact = new System.Windows.Forms.ToolStripButton();
+            this.DiscardContact = new System.Windows.Forms.ToolStripButton();
+            this.ImportExel = new System.Windows.Forms.ToolStripButton();
+            this.sendNoteToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -174,6 +175,7 @@ namespace ContactApp
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -215,94 +217,32 @@ namespace ContactApp
             this.deleteNodeToolStripMenuItem.Text = "Delete Node";
             this.deleteNodeToolStripMenuItem.Click += new System.EventHandler(this.deleteNodeToolStripMenuItem_Click);
             // 
-            // AddContact
-            // 
-            this.AddContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.AddContact.Enabled = false;
-            this.AddContact.Image = ((System.Drawing.Image)(resources.GetObject("AddContact.Image")));
-            this.AddContact.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.AddContact.Name = "AddContact";
-            this.AddContact.Size = new System.Drawing.Size(29, 25);
-            this.AddContact.Text = "Add Contact";
-            this.AddContact.Click += new System.EventHandler(this.AddContact_Click);
-            // 
-            // EditContact
-            // 
-            this.EditContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.EditContact.Image = ((System.Drawing.Image)(resources.GetObject("EditContact.Image")));
-            this.EditContact.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.EditContact.Name = "EditContact";
-            this.EditContact.Size = new System.Drawing.Size(29, 25);
-            this.EditContact.Text = "Edit Contact";
-            this.EditContact.Click += new System.EventHandler(this.EditContact_Click);
-            // 
-            // DeleteContact
-            // 
-            this.DeleteContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DeleteContact.Image = ((System.Drawing.Image)(resources.GetObject("DeleteContact.Image")));
-            this.DeleteContact.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DeleteContact.Name = "DeleteContact";
-            this.DeleteContact.Size = new System.Drawing.Size(29, 25);
-            this.DeleteContact.Text = "Delete Contact";
-            this.DeleteContact.Click += new System.EventHandler(this.DeleteContact_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
-            // 
-            // SaveContact
-            // 
-            this.SaveContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveContact.Image = ((System.Drawing.Image)(resources.GetObject("SaveContact.Image")));
-            this.SaveContact.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveContact.Name = "SaveContact";
-            this.SaveContact.Size = new System.Drawing.Size(29, 25);
-            this.SaveContact.Text = "Save Contact";
-            this.SaveContact.Click += new System.EventHandler(this.SaveContact_Click);
-            // 
-            // DiscardContact
-            // 
-            this.DiscardContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.DiscardContact.Image = ((System.Drawing.Image)(resources.GetObject("DiscardContact.Image")));
-            this.DiscardContact.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DiscardContact.Name = "DiscardContact";
-            this.DiscardContact.Size = new System.Drawing.Size(29, 25);
-            this.DiscardContact.Text = "Discard Contact";
-            this.DiscardContact.Click += new System.EventHandler(this.DiscardContact_Click);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
-            // 
-            // ImportExel
-            // 
-            this.ImportExel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.ImportExel.Image = ((System.Drawing.Image)(resources.GetObject("ImportExel.Image")));
-            this.ImportExel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.ImportExel.Name = "ImportExel";
-            this.ImportExel.Size = new System.Drawing.Size(29, 25);
-            this.ImportExel.Text = "Import Exel or CSV";
-            this.ImportExel.Click += new System.EventHandler(this.ImportExel_Click);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(56, 25);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 28);
             this.toolStripLabel1.Text = "Search:";
             // 
             // toolStripTextBox1
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.toolStripTextBox1.Size = new System.Drawing.Size(0, 28);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(0, 31);
             this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
@@ -310,13 +250,13 @@ namespace ContactApp
             // 
             this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(132, 28);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(132, 31);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // toolStrip1
             // 
@@ -344,31 +284,10 @@ namespace ContactApp
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // sendNoteToolStripButton
-            // 
-            this.sendNoteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.sendNoteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("sendNoteToolStripButton.Image")));
-            this.sendNoteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.sendNoteToolStripButton.Name = "sendNoteToolStripButton";
-            this.sendNoteToolStripButton.Size = new System.Drawing.Size(29, 25);
-            this.sendNoteToolStripButton.Text = "SendNote";
-            this.sendNoteToolStripButton.Click += new System.EventHandler(this.sendNoteToolStripButton_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 25);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // toolStripTextBox2
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(159, 28);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(159, 31);
             this.toolStripTextBox2.TextChanged += new System.EventHandler(this.toolStripTextBox2_TextChanged);
             // 
             // panel2
@@ -812,16 +731,6 @@ namespace ContactApp
             this.dataGridView5.TabIndex = 49;
             this.dataGridView5.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellClick);
             this.dataGridView5.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellDoubleClick);
-            // 
-            // closeButton
-            // 
-            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(325, -1);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(40, 25);
-            this.closeButton.TabIndex = 47;
-            this.closeButton.UseVisualStyleBackColor = true;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // panel6
             // 
@@ -1399,11 +1308,115 @@ namespace ContactApp
             // 
             this.flowLayoutPanel1.Controls.Add(this.nextButton);
             this.flowLayoutPanel1.Controls.Add(this.preButton);
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 275);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(940, 42);
             this.flowLayoutPanel1.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ContactApp.Properties.Resources.refresh__2_;
+            this.pictureBox1.InitialImage = global::ContactApp.Properties.Resources.refresh__2_1;
+            this.pictureBox1.Location = new System.Drawing.Point(165, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(210, 73);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 23;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // closeButton
+            // 
+            this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
+            this.closeButton.Location = new System.Drawing.Point(325, -1);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(40, 25);
+            this.closeButton.TabIndex = 47;
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // AddContact
+            // 
+            this.AddContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddContact.Enabled = false;
+            this.AddContact.Image = ((System.Drawing.Image)(resources.GetObject("AddContact.Image")));
+            this.AddContact.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddContact.Name = "AddContact";
+            this.AddContact.Size = new System.Drawing.Size(29, 25);
+            this.AddContact.Text = "Add Contact";
+            this.AddContact.Click += new System.EventHandler(this.AddContact_Click);
+            // 
+            // EditContact
+            // 
+            this.EditContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.EditContact.Image = ((System.Drawing.Image)(resources.GetObject("EditContact.Image")));
+            this.EditContact.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EditContact.Name = "EditContact";
+            this.EditContact.Size = new System.Drawing.Size(29, 28);
+            this.EditContact.Text = "Edit Contact";
+            this.EditContact.Click += new System.EventHandler(this.EditContact_Click);
+            // 
+            // DeleteContact
+            // 
+            this.DeleteContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DeleteContact.Image = ((System.Drawing.Image)(resources.GetObject("DeleteContact.Image")));
+            this.DeleteContact.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DeleteContact.Name = "DeleteContact";
+            this.DeleteContact.Size = new System.Drawing.Size(29, 28);
+            this.DeleteContact.Text = "Delete Contact";
+            this.DeleteContact.Click += new System.EventHandler(this.DeleteContact_Click);
+            // 
+            // SaveContact
+            // 
+            this.SaveContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveContact.Image = ((System.Drawing.Image)(resources.GetObject("SaveContact.Image")));
+            this.SaveContact.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveContact.Name = "SaveContact";
+            this.SaveContact.Size = new System.Drawing.Size(29, 28);
+            this.SaveContact.Text = "Save Contact";
+            this.SaveContact.Click += new System.EventHandler(this.SaveContact_Click);
+            // 
+            // DiscardContact
+            // 
+            this.DiscardContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.DiscardContact.Image = ((System.Drawing.Image)(resources.GetObject("DiscardContact.Image")));
+            this.DiscardContact.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DiscardContact.Name = "DiscardContact";
+            this.DiscardContact.Size = new System.Drawing.Size(29, 28);
+            this.DiscardContact.Text = "Discard Contact";
+            this.DiscardContact.Click += new System.EventHandler(this.DiscardContact_Click);
+            // 
+            // ImportExel
+            // 
+            this.ImportExel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ImportExel.Image = ((System.Drawing.Image)(resources.GetObject("ImportExel.Image")));
+            this.ImportExel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ImportExel.Name = "ImportExel";
+            this.ImportExel.Size = new System.Drawing.Size(29, 28);
+            this.ImportExel.Text = "Import Exel or CSV";
+            this.ImportExel.Click += new System.EventHandler(this.ImportExel_Click);
+            // 
+            // sendNoteToolStripButton
+            // 
+            this.sendNoteToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.sendNoteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("sendNoteToolStripButton.Image")));
+            this.sendNoteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.sendNoteToolStripButton.Name = "sendNoteToolStripButton";
+            this.sendNoteToolStripButton.Size = new System.Drawing.Size(29, 28);
+            this.sendNoteToolStripButton.Text = "SendNote";
+            this.sendNoteToolStripButton.Click += new System.EventHandler(this.sendNoteToolStripButton_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 28);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // mainWindow
             // 
@@ -1465,6 +1478,7 @@ namespace ContactApp
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1578,6 +1592,7 @@ namespace ContactApp
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
