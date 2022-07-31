@@ -1406,26 +1406,6 @@ namespace ContactApp
             }
         }
 
-        private void SetLoading(bool displayLoader)
-        {
-            if (displayLoader)
-            {
-                this.Invoke((MethodInvoker)delegate
-                {
-                    pictureBox1.Visible = true;
-                    this.Cursor = Cursors.WaitCursor;
-                });
-            }
-            else
-            {
-                this.Invoke((MethodInvoker)delegate
-                {
-                    pictureBox1.Visible = false;
-                    this.Cursor = Cursors.Default;
-                });
-            }
-        }
-
         public string GenerateQuery(int page)
         {
             string query; 
@@ -1799,21 +1779,21 @@ namespace ContactApp
                     dt2 = (DataTable)dataGridView4.DataSource;
 
                     var dr3 = dt2.NewRow();
-                    dr3["value"] = docketNumbermaskedTextBox.Text;
+                    dr3["DocketNumber"] = docketNumbermaskedTextBox.Text;
 
-                    dt2.Rows.Add(dr3);
+                    dt2.Rows.InsertAt(dr3, 0);
 
                 }
 
                 else
                 {
                     dt2 = new DataTable();
-                    dt2.Columns.Add("value");
+                    dt2.Columns.Add("DocketNumber");
 
                     var dr3 = dt2.NewRow();
-                    dr3["value"] = docketNumbermaskedTextBox.Text;
+                    dr3["DocketNumber"] = docketNumbermaskedTextBox.Text;
 
-                    dt2.Rows.Add(dr3);
+                    dt2.Rows.InsertAt(dr3,0);
 
                 }
                 dataGridView4.DataSource = dt2;
@@ -1887,9 +1867,9 @@ namespace ContactApp
                         DataTable dt2 = (DataTable)dataGridView3.DataSource;
 
                         var dr3 = dt2.NewRow();
-                        dr3["value"] = maskedTextBox1.Text;
+                        dr3["Phone"] = maskedTextBox1.Text;
 
-                        dt2.Rows.Add(dr3);
+                        dt2.Rows.InsertAt(dr3, 0);
                         dataGridView3.DataSource = dt2;
 
                     }
@@ -1897,12 +1877,12 @@ namespace ContactApp
                     else
                     {
                         DataTable dt2 = new DataTable();
-                        dt2.Columns.Add("value");
+                        dt2.Columns.Add("Phone");
 
                         var dr3 = dt2.NewRow();
-                        dr3["value"] = maskedTextBox1.Text;
+                        dr3["Phone"] = maskedTextBox1.Text;
 
-                        dt2.Rows.Add(dr3);
+                        dt2.Rows.InsertAt(dr3, 0);
                         dataGridView3.DataSource = dt2;
 
                     }
@@ -1914,7 +1894,7 @@ namespace ContactApp
                         DataTable dt2 = (DataTable)dataGridView5.DataSource;
 
                         var dr3 = dt2.NewRow();
-                        dr3["value"] = maskedTextBox1.Text;
+                        dr3["Fax"] = maskedTextBox1.Text;
 
                         dt2.Rows.Add(dr3);
                         dataGridView5.DataSource = dt2;
@@ -1923,10 +1903,10 @@ namespace ContactApp
                     else
                     {
                         DataTable dt2 = new DataTable();
-                        dt2.Columns.Add("value");
+                        dt2.Columns.Add("Fax");
 
                         var dr3 = dt2.NewRow();
-                        dr3["value"] = maskedTextBox1.Text;
+                        dr3["Fax"] = maskedTextBox1.Text;
 
                         dt2.Rows.Add(dr3);
                         dataGridView5.DataSource = dt2;
@@ -2225,15 +2205,15 @@ namespace ContactApp
                     DataRowView dr = (DataRowView)row.DataBoundItem;
                     //comboCell.Items.AddRange(Convert.ToString(dr.Row["phones"]).Split(','));
                     comboCell.Items.AddRange(Convert.ToString(row.Cells["phones"].Value).Split(','));
-                    
 
-                    //Fax
-                    var faxCell = (DataGridViewComboBoxCell)row.Cells[dataGridView1.Columns.Count - 1];
+
+               //Fax
+                var faxCell = (DataGridViewComboBoxCell)row.Cells[dataGridView1.Columns.Count - 1];
                     DataRowView fax_Dr = (DataRowView)row.DataBoundItem;
                     faxCell.Items.AddRange(Convert.ToString(row.Cells["faxes"].Value).Split(','));
 
                 }
-
+                
                 //dataGridView1.Rows[0].Cells[dataGridView1.ColumnCount - 1].ReadOnly = false;
                 dataGridView1.Columns["phones"].Visible = false;
                 dataGridView1.Columns["faxes"].Visible = false;
