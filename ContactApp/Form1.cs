@@ -433,6 +433,8 @@ namespace ContactApp
                                 dtNew = repository.GetDataTabletFromCSVFile(filePath);
                                 if (dtNew.Rows != null && dtNew.Rows.Count != 0 && dtNew.Rows.ToString() != String.Empty)
                                 {
+                                    dataGridView1.Columns.Clear();
+                                    dataGridView1.DataSource = null;
                                     dataGridView1.DataSource = dtNew;
                                 }
                                 else
@@ -714,6 +716,8 @@ namespace ContactApp
                             this.TotalPage += 1;
                         }
 
+
+                        dataGridView1.Columns.Clear();
 
                         string query = GenerateQueryNodes(1,selectednode);
 
@@ -1279,7 +1283,8 @@ namespace ContactApp
         public void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
-            SetLoading(true); 
+            //Form loading = new Loading();
+            //loading.Show();
 
             dataGridView1.Columns.Clear();
 
@@ -2198,14 +2203,7 @@ namespace ContactApp
             {
                 dataGridView1.Columns[i].ReadOnly = true;
             }
-
-
-            //if (dataGridView1.Columns["AllPhone"] != null || dataGridView1.Columns["AllFax"] != null)
-            //{
-            //    return;
-            //}
-            //else
-            //{
+                
                 DataGridViewComboBoxColumn phoneColumn = new DataGridViewComboBoxColumn();
                 phoneColumn.Name = "AllPhone";
                 phoneColumn.HeaderText = "Phone";
