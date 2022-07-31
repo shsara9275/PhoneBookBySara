@@ -433,8 +433,6 @@ namespace ContactApp
                                 dtNew = repository.GetDataTabletFromCSVFile(filePath);
                                 if (dtNew.Rows != null && dtNew.Rows.Count != 0 && dtNew.Rows.ToString() != String.Empty)
                                 {
-                                    dataGridView1.Columns.Clear();
-                                    dataGridView1.DataSource = null;
                                     dataGridView1.DataSource = dtNew;
                                 }
                                 else
@@ -846,7 +844,7 @@ namespace ContactApp
 
 
                                 //FillDataGrid(null, query);
-
+                                dataGridView1.Columns.Clear();
                                 FillDataGridNodes(selectednode, query);
                                 /**************************************************************************/
 
@@ -1282,10 +1280,6 @@ namespace ContactApp
 
         public void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-
-            //Form loading = new Loading();
-            //loading.Show();
-
             dataGridView1.Columns.Clear();
 
             //فعال شدن دکمه ادد دستی
@@ -1410,7 +1404,6 @@ namespace ContactApp
                 FillDataGrid(null, query);
 
             }
-            SetLoading(false);
         }
 
         private void SetLoading(bool displayLoader)
