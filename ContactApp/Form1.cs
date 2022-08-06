@@ -572,7 +572,7 @@ namespace ContactApp
                                     MessageBox.Show("There is no data in this file", "GAUTAM POS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
 
-                                
+
 
                             }
                             catch (Exception ex)
@@ -687,6 +687,7 @@ namespace ContactApp
                         isSuccess = repository.InsertContact(CompanyID, 1, "", textBox11.Text, "", "", "", "");
 
                     }
+
                     if (webID != "")
                     {
                         isSuccess = repository.UpdateContact(webID, textBox4.Text, "", "", "", "", "");
@@ -696,6 +697,7 @@ namespace ContactApp
                         isSuccess = repository.InsertContact(CompanyID, 2, textBox4.Text, "", "", "", "", "");
 
                     }
+
                     if (emailID != "")
                     {
                         isSuccess = repository.UpdateContact(emailID, textBox5.Text, "", "", "", "", "");
@@ -704,6 +706,160 @@ namespace ContactApp
                     {
                         isSuccess = repository.InsertContact(CompanyID, 3, textBox5.Text, "", "", "", "", "");
                     }
+
+                    //DocketNumber
+                    DataTable oldDocketNumbers = repository.GetDocketNumberByCompanyID(CompanyID);
+                    if (oldDocketNumbers.Rows.Count == 0)
+                    {
+                        //insert
+                        foreach (DataGridViewRow row in dataGridView4.Rows)
+                        {
+                            var docketNumber = repository.InsertDocketNumber(CompanyID, row.Cells["DocketNumber"].Value.ToString());
+                        }
+                    }
+
+                    else
+                    {
+                        //ebteda bayad moghayese shavar bad update ya insert
+
+                        List<string> ids = new List<string>();
+                        List<string> values = new List<string>();
+
+                        foreach (DataRow oldDock in oldDocketNumbers.Rows)
+                        {
+                            ids.Add(oldDock["ID"].ToString());
+                        }
+
+                        foreach (DataRow oldDock in oldDocketNumbers.Rows)
+                        {
+                            values.Add(oldDock["DocketNumber"].ToString());
+                        }
+
+
+
+                        foreach (DataGridViewRow row in dataGridView4.Rows)
+                        {
+                            if (!ids.Contains(row.Cells["ID"].Value.ToString()))
+                            {
+                                var docketNumber = repository.InsertDocketNumber(CompanyID, row.Cells["DocketNumber"].Value.ToString());
+                            }
+                            else
+                            {
+                                if (!values.Contains(row.Cells["DocketNumber"].Value.ToString()))
+                                {
+                                    var docketNumber = repository.UpdateDocketNumber(row.Cells["ID"].Value.ToString(), row.Cells["DocketNumber"].Value.ToString());
+                                }
+                            }
+                        }
+                    }
+
+
+                    //Phones
+                    DataTable oldPhones = repository.GetPhoneNumberByCompanyID(CompanyID);
+                    if (oldPhones.Rows.Count == 0)
+                    {
+                        //insert
+                        foreach (DataGridViewRow row in dataGridView3.Rows)
+                        {
+
+                            var phoneNumber = repository.InsertContact(CompanyID, 4, row.Cells["Phone"].Value.ToString(), "", "", "", "", "");
+
+                        }
+                    }
+
+                    else
+                    {
+                        //ebteda bayad moghayese shavar bad update ya insert
+
+                        List<string> ids = new List<string>();
+                        List<string> values = new List<string>();
+
+                        foreach (DataRow oldPhone in oldPhones.Rows)
+                        {
+                            ids.Add(oldPhone["ID"].ToString());
+                        }
+
+                        foreach (DataRow oldPhone in oldPhones.Rows)
+                        {
+                            values.Add(oldPhone["Phone"].ToString());
+                        }
+
+
+
+                        foreach (DataGridViewRow row in dataGridView3.Rows)
+                        {
+                            if (!ids.Contains(row.Cells["ID"].Value.ToString()))
+                            {
+                                var phoneNumber = repository.InsertContact(CompanyID, 4, row.Cells["Phone"].Value.ToString(), "", "", "", "", "");
+                            }
+                            else
+                            {
+                                if (!values.Contains(row.Cells["Phone"].Value.ToString()))
+                                {
+
+                                    var docketNumber = repository.UpdatePhoneNumber(row.Cells["ID"].Value.ToString(), row.Cells["Phone"].Value.ToString());
+                                }
+                            }
+                        }
+
+
+
+                    }
+
+                    //Faxes
+                    DataTable oldFaxes = repository.GetFaxByCompanyID(CompanyID);
+                    if (oldFaxes.Rows.Count == 0)
+                    {
+                        //insert
+                        foreach (DataGridViewRow row in dataGridView5.Rows)
+                        {
+
+                            var phoneNumber = repository.InsertContact(CompanyID, 5, row.Cells["Fax"].Value.ToString(), "", "", "", "", "");
+
+                        }
+                    }
+
+                    else
+                    {
+                        //ebteda bayad moghayese shavar bad update ya insert
+
+                        List<string> ids = new List<string>();
+                        List<string> values = new List<string>();
+
+                        foreach (DataRow oldFax in oldFaxes.Rows)
+                        {
+                            ids.Add(oldFax["ID"].ToString());
+                        }
+
+                        foreach (DataRow oldFax in oldFaxes.Rows)
+                        {
+                            values.Add(oldFax["Fax"].ToString());
+                        }
+
+
+
+                        foreach (DataGridViewRow row in dataGridView5.Rows)
+                        {
+                            if (!ids.Contains(row.Cells["ID"].Value.ToString()))
+                            {
+                                var faxNumber = repository.InsertContact(CompanyID,5, row.Cells["Fax"].Value.ToString(), "", "", "", "", "");
+                            }
+                            else
+                            {
+                                if (!values.Contains(row.Cells["Fax"].Value.ToString()))
+                                {
+
+                                    var faxNumber = repository.UpdatePhoneNumber(row.Cells["ID"].Value.ToString(), row.Cells["Fax"].Value.ToString());
+                                }
+                            }
+                        }
+                    }
+
+
+
+
+
+
 
                     if (isSuccess == true)
                     {
@@ -726,7 +882,7 @@ namespace ContactApp
 
                         dataGridView1.Columns.Clear();
 
-                        string query = GenerateQueryNodes(1,selectednode);
+                        string query = GenerateQueryNodes(1, selectednode);
 
 
                         //FillDataGrid(null, query);
@@ -806,20 +962,20 @@ namespace ContactApp
 
                                 foreach (DataGridViewRow row in dataGridView4.Rows)
                                 {
-                                    var docketNumber = repository.InsertDocketNumber(CompanyID, row.Cells["value"].Value.ToString());
+                                    var docketNumber = repository.InsertDocketNumber(CompanyID, row.Cells["DocketNumber"].Value.ToString());
 
                                 }
 
                                 foreach (DataGridViewRow row in dataGridView3.Rows)
                                 {
 
-                                    var phoneNumber = repository.InsertContact(CompanyID, 5, row.Cells["value"].Value.ToString(), "", "", "", "", "");
+                                    var phoneNumber = repository.InsertContact(CompanyID, 5, row.Cells["Phone"].Value.ToString(), "", "", "", "", "");
 
                                 }
 
                                 foreach (DataGridViewRow row in dataGridView5.Rows)
                                 {
-                                    var faxNumber = repository.InsertContact(CompanyID, 4, row.Cells["value"].Value.ToString(), "", "", "", "", "");
+                                    var faxNumber = repository.InsertContact(CompanyID, 4, row.Cells["Fax"].Value.ToString(), "", "", "", "", "");
 
                                 }
 
@@ -849,17 +1005,11 @@ namespace ContactApp
                                 }
 
 
-                                string query = GenerateQueryNodes(1,selectednode);
-
-
-                                //FillDataGrid(null, query);
                                 dataGridView1.Columns.Clear();
+
+                                string query = GenerateQueryNodes(1, selectednode);
                                 FillDataGridNodes(selectednode, query);
                                 /**************************************************************************/
-
-
-
-                                //FillDataGrid(selectednode, null);
 
                                 MessageBox.Show("contact Add Secssesfuly ", "Sucssed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -1145,7 +1295,7 @@ namespace ContactApp
             if (e.ColumnIndex == dataGridView1.ColumnCount - 1)
             {
 
-             
+
                 //DataGridViewCell cell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 //dataGridView1.CurrentCell = cell;
                 //cell.ReadOnly = false;
@@ -1153,10 +1303,12 @@ namespace ContactApp
 
                 return;
             }
-         
+
 
             if (dataGridView1.CurrentRow != null)
             {
+
+
                 //jahate namayeshe recorde entekhabi balaye girid
                 dataGridView1.FirstDisplayedScrollingRowIndex = dataGridView1.CurrentRow.Index;
                 //baraye inke hamishe panele aval namayesh dade shavad
@@ -1173,14 +1325,14 @@ namespace ContactApp
                 ContactEditMode = true;
                 groupBox6.Enabled = true;
                 groupBox3.Enabled = true;
+                maskedTextBox1.Enabled = true;
+                comboBox1.Enabled = true;
                 //******************************
                 //tabPage1.Enabled = true;
                 panel11.Enabled = true;
                 panel10.Enabled = true;
                 panel8.Enabled = true;
-                panel9.Enabled = true;
-                groupBox3.Enabled = true;
-                maskedTextBox1.Enabled = true;
+                panel9.Enabled = true;               
                 closeButton.Enabled = false;
                 //******************************
                 tabPage3.Enabled = true;
@@ -1332,7 +1484,7 @@ namespace ContactApp
                     }
 
 
-                    string query = GenerateQueryNodes(1,selectednode);
+                    string query = GenerateQueryNodes(1, selectednode);
 
 
                     //FillDataGrid(null, query);
@@ -1374,7 +1526,7 @@ namespace ContactApp
                         }
 
 
-                        string query = GenerateQueryNodes(1,selectednode);
+                        string query = GenerateQueryNodes(1, selectednode);
 
 
                         //FillDataGrid(null, query);
@@ -1413,15 +1565,15 @@ namespace ContactApp
                 FillDataGrid(null, query);
 
             }
-         
+
         }
 
         public string GenerateQuery(int page)
         {
-            string query; 
+            string query;
             if (page == 1)
             {
-                 query = $@"SELECT  TOP {PageSize}
+                query = $@"SELECT  TOP {PageSize}
                                     Companies.[id],
                                     [CategoryID],
                                     CONVERT(varchar, LastUpdate, 101) as LastUpdate,
@@ -1562,7 +1714,7 @@ namespace ContactApp
 
         private void FillDataGrid(string selectedNodeArray, string q)
         {
-            
+
             //DataTable dt;
             if (q == null)
             {
@@ -1623,11 +1775,11 @@ namespace ContactApp
         private void FillDataGridNodes(string selectedNodeArray, string q)
         {
             DataTable dt;
-            
-                
-                dt = repository.SelectAllRunner(q);
-            
-            
+
+
+            dt = repository.SelectAllRunner(q);
+
+
             dataGridView1.DataSource = dt;
             if (dt.Rows.Count > 0)
             {
@@ -1733,7 +1885,7 @@ namespace ContactApp
                     }
 
 
-                    string query = GenerateQueryNodes(1,selectednode);
+                    string query = GenerateQueryNodes(1, selectednode);
 
 
                     //FillDataGrid(null, query);
@@ -1782,7 +1934,7 @@ namespace ContactApp
                     }
 
 
-                    string query = GenerateQueryNodes(1,selectednode);
+                    string query = GenerateQueryNodes(1, selectednode);
 
 
                     //FillDataGrid(null, query);
@@ -1821,7 +1973,7 @@ namespace ContactApp
                     var dr3 = dt2.NewRow();
                     dr3["DocketNumber"] = docketNumbermaskedTextBox.Text;
 
-                    dt2.Rows.InsertAt(dr3,0);
+                    dt2.Rows.InsertAt(dr3, 0);
 
                 }
                 dataGridView4.DataSource = dt2;
@@ -1958,8 +2110,10 @@ namespace ContactApp
             //{
             if (dataGridView4.CurrentRow != null)
             {
-                repository.UpdateDocketNumber(dataGridView4.CurrentRow.Cells[0].Value.ToString(), docketNumbermaskedTextBox.Text);
-                FillDNGv();
+                dataGridView4.CurrentRow.Cells["DocketNumber"].Value = docketNumbermaskedTextBox.Text;
+
+                //repository.UpdateDocketNumber(dataGridView4.CurrentRow.Cells[0].Value.ToString(), docketNumbermaskedTextBox.Text);
+                //FillDNGv();
 
             }
             //}
@@ -1970,7 +2124,8 @@ namespace ContactApp
         {
             if (dataGridView4.CurrentRow != null)
             {
-                docketNumbermaskedTextBox.Text = dataGridView4.CurrentRow.Cells["value"].Value.ToString();
+
+                docketNumbermaskedTextBox.Text = dataGridView4.CurrentRow.Cells["DocketNumber"].Value.ToString();
 
             }
         }
@@ -1982,7 +2137,7 @@ namespace ContactApp
             {
                 if (dataGridView3.CurrentRow.Cells[1].Value.ToString() == "4")
                 {
-                    maskedTextBox1.ReadOnly = true;
+                    //maskedTextBox1.ReadOnly = true;
                     maskedTextBox1.Text = dataGridView3.CurrentRow.Cells[2].Value.ToString();
                     comboBox1.SelectedIndex = 1;
 
@@ -1999,7 +2154,7 @@ namespace ContactApp
             {
                 if (dataGridView5.CurrentRow.Cells[1].Value.ToString() == "5")
                 {
-                    maskedTextBox1.ReadOnly = true;
+                    //maskedTextBox1.ReadOnly = true;
                     maskedTextBox1.Text = dataGridView5.CurrentRow.Cells[2].Value.ToString();
                     comboBox1.SelectedIndex = 0;
 
@@ -2200,51 +2355,51 @@ namespace ContactApp
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
 
-            for (int i = 0; i < dataGridView1.ColumnCount-2; i++)
+            for (int i = 0; i < dataGridView1.ColumnCount - 2; i++)
             {
                 dataGridView1.Columns[i].ReadOnly = true;
             }
-                
-                DataGridViewComboBoxColumn phoneColumn = new DataGridViewComboBoxColumn();
-                phoneColumn.Name = "AllPhone";
-                phoneColumn.HeaderText = "Phone";
-                phoneColumn.ReadOnly = false;
-                phoneColumn.FlatStyle = FlatStyle.Standard;
 
-                DataGridViewComboBoxColumn faxesColumn = new DataGridViewComboBoxColumn();
-                faxesColumn.Name = "AllFax";
-                faxesColumn.HeaderText = "Fax";
-                faxesColumn.ReadOnly = false;
-                faxesColumn.FlatStyle = FlatStyle.Standard;
+            DataGridViewComboBoxColumn phoneColumn = new DataGridViewComboBoxColumn();
+            phoneColumn.Name = "AllPhone";
+            phoneColumn.HeaderText = "Phone";
+            phoneColumn.ReadOnly = false;
+            phoneColumn.FlatStyle = FlatStyle.Standard;
 
-
-
-                //phoneColumn.Items.AddRange(new string[] { "1", "12" });
-
-                dataGridView1.Columns.Add(phoneColumn);
-                dataGridView1.Columns.Add(faxesColumn);
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    //Phone
-                    //خود سلول کمبوباکس
-                    var comboCell = (DataGridViewComboBoxCell)row.Cells[dataGridView1.Columns.Count - 2];
-                    //کل ردیف
-                    DataRowView dr = (DataRowView)row.DataBoundItem;
-                    //comboCell.Items.AddRange(Convert.ToString(dr.Row["phones"]).Split(','));
-                    comboCell.Items.AddRange(Convert.ToString(row.Cells["phones"].Value).Split(','));
+            DataGridViewComboBoxColumn faxesColumn = new DataGridViewComboBoxColumn();
+            faxesColumn.Name = "AllFax";
+            faxesColumn.HeaderText = "Fax";
+            faxesColumn.ReadOnly = false;
+            faxesColumn.FlatStyle = FlatStyle.Standard;
 
 
-               //Fax
+
+            //phoneColumn.Items.AddRange(new string[] { "1", "12" });
+
+            dataGridView1.Columns.Add(phoneColumn);
+            dataGridView1.Columns.Add(faxesColumn);
+
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                //Phone
+                //خود سلول کمبوباکس
+                var comboCell = (DataGridViewComboBoxCell)row.Cells[dataGridView1.Columns.Count - 2];
+                //کل ردیف
+                DataRowView dr = (DataRowView)row.DataBoundItem;
+                //comboCell.Items.AddRange(Convert.ToString(dr.Row["phones"]).Split(','));
+                comboCell.Items.AddRange(Convert.ToString(row.Cells["phones"].Value).Split(','));
+
+
+                //Fax
                 var faxCell = (DataGridViewComboBoxCell)row.Cells[dataGridView1.Columns.Count - 1];
-                    DataRowView fax_Dr = (DataRowView)row.DataBoundItem;
-                    faxCell.Items.AddRange(Convert.ToString(row.Cells["faxes"].Value).Split(','));
+                DataRowView fax_Dr = (DataRowView)row.DataBoundItem;
+                faxCell.Items.AddRange(Convert.ToString(row.Cells["faxes"].Value).Split(','));
 
-                }
-                
-                //dataGridView1.Rows[0].Cells[dataGridView1.ColumnCount - 1].ReadOnly = false;
-                dataGridView1.Columns["phones"].Visible = false;
-                dataGridView1.Columns["faxes"].Visible = false;
+            }
+
+            //dataGridView1.Rows[0].Cells[dataGridView1.ColumnCount - 1].ReadOnly = false;
+            dataGridView1.Columns["phones"].Visible = false;
+            dataGridView1.Columns["faxes"].Visible = false;
             //}
         }
 
@@ -2273,7 +2428,8 @@ namespace ContactApp
                     query = GenerateQueryNodes(CurrentPageIndex, selectednode);
                     FillDataGridNodes(selectednode, query);
                 }
-                else {
+                else
+                {
                     query = GenerateQuery(CurrentPageIndex);
                     FillDataGrid(null, query);
                 }
@@ -2303,5 +2459,6 @@ namespace ContactApp
 
             }
         }
+
     }
 }
