@@ -365,7 +365,7 @@ namespace ContactApp
         //}
 
 
-        private async void ImportExel_Click(object sender, EventArgs e)
+        private void ImportExel_Click(object sender, EventArgs e)
         {
             if (selectedNodeName == "1")
             {
@@ -431,139 +431,148 @@ namespace ContactApp
 
                                 DataTable dtNew = new DataTable();
                                 dtNew = repository.GetDataTabletFromCSVFile(filePath);
+
                                 if (dtNew.Rows != null && dtNew.Rows.Count != 0 && dtNew.Rows.ToString() != String.Empty)
                                 {
-                                    dataGridView1.DataSource = dtNew;
+                                    /*  */
+
+                                    var rows = (from r in dtNew.AsEnumerable() select r).Skip(1);
+                                    foreach (DataRow row in rows)
+                                    {
+
+                                        if (!string.IsNullOrEmpty(row[0].ToString()))
+                                        {
+                                            if (row[0].ToString().Length < 8)
+                                            {
+                                                row[0] = '0' + row[0].ToString();
+                                            }
+
+                                            var year = row[0].ToString().Substring(4);
+                                            var month = row[0].ToString().Substring(0, 2);
+                                            var day = row[0].ToString().Substring(2, 2);
+                                            LastUpdate = $"{year}-{month}-{day} 00:00:00.000";
+                                        }
+                                        //var phones = row[1].ToString().Split('/');
+                                        //var note = row[14].ToString().Split(':');
+                                        var companyID = repository.InsertCompanies(selectedNodeTag, row[2].ToString(), "", row[8].ToString(), row[9].ToString(), Convert.ToInt32(row[6] is DBNull ? 0 : row[6]), 0, row[5].ToString(), false, row[1].ToString(), LastUpdate);
+
+
+                                        if (companyID != null)
+                                        {
+                                            if (!string.IsNullOrWhiteSpace(row[46].ToString()) || !string.IsNullOrWhiteSpace(row[47].ToString()) || !string.IsNullOrWhiteSpace(row[48].ToString()) || !string.IsNullOrWhiteSpace(row[49].ToString())
+                                                || !string.IsNullOrWhiteSpace(row[50].ToString()) || !string.IsNullOrWhiteSpace(row[51].ToString()) || !string.IsNullOrWhiteSpace(row[52].ToString())
+                                                || !string.IsNullOrWhiteSpace(row[53].ToString()) || !string.IsNullOrWhiteSpace(row[54].ToString()))
+                                            {
+                                                var resAddr = repository.InsertContact(companyID, 0, "", row[48].ToString(), row[49].ToString(), row[52].ToString(), row[53].ToString(), row[51].ToString());
+                                            }
+
+                                            //var resAddr2 = repository.InsertContact(companyID, 1, "", row[5].ToString(), "", "", "", "");
+
+                                            var resWebSite = repository.InsertContact(companyID, 2, row[60].ToString(), "", "", "", "", "");
+                                            var resEmail = repository.InsertContact(companyID, 3, row[61].ToString(), "", "", "", "", "");
+
+                                            //INSERT NOTES
+                                            if (!string.IsNullOrWhiteSpace(row[32].ToString()))
+                                            {
+                                                var resNote = repository.InsertNotes(companyID, "", row[32].ToString());
+                                            }
+                                            if (!string.IsNullOrWhiteSpace(row[33].ToString()))
+                                            {
+                                                var resNote = repository.InsertNotes(companyID, "", row[33].ToString());
+                                            }
+                                            if (!string.IsNullOrWhiteSpace(row[34].ToString()))
+                                            {
+                                                var resNote = repository.InsertNotes(companyID, "", row[34].ToString());
+                                            }
+                                            if (!string.IsNullOrWhiteSpace(row[35].ToString()))
+                                            {
+                                                var resNote = repository.InsertNotes(companyID, "", row[35].ToString());
+                                            }
+                                            if (!string.IsNullOrWhiteSpace(row[36].ToString()))
+                                            {
+                                                var resNote = repository.InsertNotes(companyID, "", row[36].ToString());
+                                            }
+                                            if (!string.IsNullOrWhiteSpace(row[37].ToString()))
+                                            {
+                                                var resNote = repository.InsertNotes(companyID, "", row[37].ToString());
+                                            }
+
+                                            //INSERT PHONES
+                                            if (!string.IsNullOrWhiteSpace(row[42].ToString()))
+                                            {
+                                                var phoneNumbber = repository.InsertContact(companyID, 4, row[42].ToString(), "", "", "", "", "");
+                                            }
+                                            if (!string.IsNullOrWhiteSpace(row[43].ToString()))
+                                            {
+                                                var phoneNumbber = repository.InsertContact(companyID, 4, row[43].ToString(), "", "", "", "", "");
+                                            }
+
+                                            //INSERT FAX
+                                            if (!string.IsNullOrWhiteSpace(row[44].ToString()))
+                                            {
+                                                var faxNumbber = repository.InsertContact(companyID, 5, row[44].ToString(), "", "", "", "", "");
+                                            }
+                                            if (!string.IsNullOrWhiteSpace(row[45].ToString()))
+                                            {
+                                                var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
+                                            }
+
+                                            //INSERT DOCKETNUMBER
+                                            if (!string.IsNullOrWhiteSpace(row[3].ToString()))
+                                            {
+                                                var docket1 = repository.InsertDocketNumber(companyID, row[3].ToString());
+                                            }
+                                            if (!string.IsNullOrWhiteSpace(row[4].ToString()))
+                                            {
+                                                var docket2 = repository.InsertDocketNumber(companyID, row[4].ToString());
+                                            }
+
+                                        }
+                                    }
+
+                                    string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
+
+                                    /*************************************************************************/
+                                    string query_Count = $@"SELECT count(Companies.ID)
+                                        FROM[dbo].[Companies]
+                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
+                                        WHERE Companies.Deleted = 'False'";
+                                    DataTable dt = repository.SelectAllRunner(query_Count);
+                                    int rowCount = Convert.ToInt32(dt.Rows[0][0]);
+                                    this.TotalPage = rowCount / PageSize;
+                                    if (rowCount % PageSize > 0)
+                                    {
+                                        this.TotalPage += 1;
+                                    }
+
+
+                                    string query = GenerateQueryNodes(1, selectednode);
+
+
+                                    //FillDataGrid(null, query);
+
+                                    FillDataGridNodes(selectednode, query);
+                                    /**************************************************************************/
+                                    MessageBox.Show("contact Add Secssesfuly ", "Sucssed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                                    if (dataGridView1.Rows.Count == 0)
+                                    {
+                                        MessageBox.Show("There is no data in this file", "GAUTAM POS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+
+
+
+
+
+                                    //dataGridView1.DataSource = dtNew;
                                 }
                                 else
                                 {
                                     MessageBox.Show("There is no data in this file", "GAUTAM POS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
 
-                                var rows = (from r in dtNew.AsEnumerable() select r).Skip(1);
-                                foreach (DataRow row in rows)
-                                {
-
-                                    if (!string.IsNullOrEmpty(row[0].ToString()))
-                                    {
-                                        if (row[0].ToString().Length < 8)
-                                        {
-                                            row[0] = '0' + row[0].ToString();
-                                        }
-
-                                        var year = row[0].ToString().Substring(4);
-                                        var month = row[0].ToString().Substring(0, 2);
-                                        var day = row[0].ToString().Substring(2, 2);
-                                        LastUpdate = $"{year}-{month}-{day} 00:00:00.000";
-                                    }
-                                    //var phones = row[1].ToString().Split('/');
-                                    //var note = row[14].ToString().Split(':');
-                                    var companyID = repository.InsertCompanies(selectedNodeTag, row[2].ToString(), "", row[8].ToString(), row[9].ToString(), Convert.ToInt32(row[6] is DBNull ? 0 : row[6]), 0, row[5].ToString(), false, row[1].ToString(), LastUpdate);
-
-
-                                    if (companyID != null)
-                                    {
-                                        if (!string.IsNullOrWhiteSpace(row[46].ToString()) || !string.IsNullOrWhiteSpace(row[47].ToString()) || !string.IsNullOrWhiteSpace(row[48].ToString()) || !string.IsNullOrWhiteSpace(row[49].ToString())
-                                            || !string.IsNullOrWhiteSpace(row[50].ToString()) || !string.IsNullOrWhiteSpace(row[51].ToString()) || !string.IsNullOrWhiteSpace(row[52].ToString())
-                                            || !string.IsNullOrWhiteSpace(row[53].ToString()) || !string.IsNullOrWhiteSpace(row[54].ToString()))
-                                        {
-                                            var resAddr = repository.InsertContact(companyID, 0, "", row[48].ToString(), row[49].ToString(), row[52].ToString(), row[53].ToString(), row[51].ToString());
-                                        }
-
-                                        //var resAddr2 = repository.InsertContact(companyID, 1, "", row[5].ToString(), "", "", "", "");
-
-                                        var resWebSite = repository.InsertContact(companyID, 2, row[60].ToString(), "", "", "", "", "");
-                                        var resEmail = repository.InsertContact(companyID, 3, row[61].ToString(), "", "", "", "", "");
-
-                                        //INSERT NOTES
-                                        if (!string.IsNullOrWhiteSpace(row[32].ToString()))
-                                        {
-                                            var resNote = repository.InsertNotes(companyID, "", row[32].ToString());
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[33].ToString()))
-                                        {
-                                            var resNote = repository.InsertNotes(companyID, "", row[33].ToString());
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[34].ToString()))
-                                        {
-                                            var resNote = repository.InsertNotes(companyID, "", row[34].ToString());
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[35].ToString()))
-                                        {
-                                            var resNote = repository.InsertNotes(companyID, "", row[35].ToString());
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[36].ToString()))
-                                        {
-                                            var resNote = repository.InsertNotes(companyID, "", row[36].ToString());
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[37].ToString()))
-                                        {
-                                            var resNote = repository.InsertNotes(companyID, "", row[37].ToString());
-                                        }
-
-                                        //INSERT PHONES
-                                        if (!string.IsNullOrWhiteSpace(row[42].ToString()))
-                                        {
-                                            var phoneNumbber = repository.InsertContact(companyID, 4, row[42].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[43].ToString()))
-                                        {
-                                            var phoneNumbber = repository.InsertContact(companyID, 4, row[43].ToString(), "", "", "", "", "");
-                                        }
-
-                                        //INSERT FAX
-                                        if (!string.IsNullOrWhiteSpace(row[44].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[44].ToString(), "", "", "", "", "");
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[45].ToString()))
-                                        {
-                                            var faxNumbber = repository.InsertContact(companyID, 5, row[45].ToString(), "", "", "", "", "");
-                                        }
-
-                                        //INSERT DOCKETNUMBER
-                                        if (!string.IsNullOrWhiteSpace(row[3].ToString()))
-                                        {
-                                            var docket1 = repository.InsertDocketNumber(companyID, row[3].ToString());
-                                        }
-                                        if (!string.IsNullOrWhiteSpace(row[4].ToString()))
-                                        {
-                                            var docket2 = repository.InsertDocketNumber(companyID, row[4].ToString());
-                                        }
-
-                                    }
-                                }
-
-                                string selectednode = getCategoryAndChild(selectedNodeTag.Split('/')[0]);
-
-                                /*************************************************************************/
-                                string query_Count = $@"SELECT count(Companies.ID)
-                                        FROM[dbo].[Companies]
-                                        left join Contacts on Companies.id = Contacts.CompanyID and Contacts.Type=0
-                                        WHERE Companies.Deleted = 'False'";
-                                DataTable dt = repository.SelectAllRunner(query_Count);
-                                int rowCount = Convert.ToInt32(dt.Rows[0][0]);
-                                this.TotalPage = rowCount / PageSize;
-                                if (rowCount % PageSize > 0)
-                                {
-                                    this.TotalPage += 1;
-                                }
-
-
-                                string query = GenerateQueryNodes(1,selectednode);
-
-
-                                //FillDataGrid(null, query);
-
-                                FillDataGridNodes(selectednode, query);
-                                /**************************************************************************/
-                                MessageBox.Show("contact Add Secssesfuly ", "Sucssed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                                if (dataGridView1.Rows.Count == 0)
-                                {
-                                    MessageBox.Show("There is no data in this file", "GAUTAM POS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
+                                
 
                             }
                             catch (Exception ex)
@@ -1404,6 +1413,7 @@ namespace ContactApp
                 FillDataGrid(null, query);
 
             }
+         
         }
 
         public string GenerateQuery(int page)
@@ -1552,7 +1562,8 @@ namespace ContactApp
 
         private void FillDataGrid(string selectedNodeArray, string q)
         {
-            DataTable dt;
+            
+            //DataTable dt;
             if (q == null)
             {
                 string query = $@"SELECT 
@@ -1575,20 +1586,37 @@ namespace ContactApp
                                 left join Contacts on Companies.id = Contacts.CompanyID  and Contacts.Type=0
                                 WHERE Companies.Deleted='False' AND Companies.CategoryID IN ( { selectedNodeArray } ) 
                                 Order By Companies.CreateDate DESC";
-                dt = repository.SelectAllRunner(query);
+                var dt = repository.SelectAllRunner(query);
+                //dt = repository.SelectAllRunner(query);
+                dataGridView1.DataSource = (DataTable)dt;
+                if (dt.Rows.Count > 0)
+                {
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[1].Visible = false;
+                    dataGridView1.ClearSelection();
+                }
+
             }
             else
             {
                 string query = q;
-                dt = repository.SelectAllRunner(query);
+                var dt = repository.SelectAllRunner(query);
+                //dt = repository.SelectAllRunner(query);
+                dataGridView1.DataSource = (DataTable)dt;
+                if (dt.Rows.Count > 0)
+                {
+                    dataGridView1.Columns[0].Visible = false;
+                    dataGridView1.Columns[1].Visible = false;
+                    dataGridView1.ClearSelection();
+                }
             }
-            dataGridView1.DataSource = dt;
-            if (dt.Rows.Count > 0)
-            {
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[1].Visible = false;
-                dataGridView1.ClearSelection();
-            }
+            //dataGridView1.DataSource = (DataTable)dt;
+            //if (dt.Rows.Count > 0)
+            //{
+            //    dataGridView1.Columns[0].Visible = false;
+            //    dataGridView1.Columns[1].Visible = false;
+            //    dataGridView1.ClearSelection();
+            //}
 
         }
 

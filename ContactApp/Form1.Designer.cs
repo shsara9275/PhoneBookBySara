@@ -185,63 +185,62 @@ namespace ContactApp
             this.editNodeToolStripMenuItem,
             this.deleteNodeToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(142, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(164, 100);
             // 
             // addContactToolStripMenuItem
             // 
             this.addContactToolStripMenuItem.Name = "addContactToolStripMenuItem";
-            this.addContactToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.addContactToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.addContactToolStripMenuItem.Text = "Add Contact";
             this.addContactToolStripMenuItem.Click += new System.EventHandler(this.AddContact_Click);
             // 
             // addNodeToolStripMenuItem
             // 
             this.addNodeToolStripMenuItem.Name = "addNodeToolStripMenuItem";
-            this.addNodeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.addNodeToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.addNodeToolStripMenuItem.Text = "Add Node";
             this.addNodeToolStripMenuItem.Click += new System.EventHandler(this.addNodeToolStripMenuItem_Click);
             // 
             // editNodeToolStripMenuItem
             // 
             this.editNodeToolStripMenuItem.Name = "editNodeToolStripMenuItem";
-            this.editNodeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.editNodeToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.editNodeToolStripMenuItem.Text = "Edit Node";
             this.editNodeToolStripMenuItem.Click += new System.EventHandler(this.editNodeToolStripMenuItem_Click);
             // 
             // deleteNodeToolStripMenuItem
             // 
             this.deleteNodeToolStripMenuItem.Name = "deleteNodeToolStripMenuItem";
-            this.deleteNodeToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.deleteNodeToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.deleteNodeToolStripMenuItem.Text = "Delete Node";
             this.deleteNodeToolStripMenuItem.Click += new System.EventHandler(this.deleteNodeToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(45, 24);
+            this.toolStripLabel1.Size = new System.Drawing.Size(56, 25);
             this.toolStripLabel1.Text = "Search:";
             // 
             // toolStripTextBox1
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.toolStripTextBox1.Size = new System.Drawing.Size(0, 27);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(0, 28);
             this.toolStripTextBox1.Click += new System.EventHandler(this.toolStripTextBox1_Click);
             this.toolStripTextBox1.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
@@ -249,13 +248,13 @@ namespace ContactApp
             // 
             this.toolStripComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(100, 27);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(132, 28);
             this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 28);
             // 
             // toolStrip1
             // 
@@ -279,7 +278,7 @@ namespace ContactApp
             this.toolStripTextBox2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(874, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(1165, 28);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -290,7 +289,7 @@ namespace ContactApp
             this.AddContact.Image = ((System.Drawing.Image)(resources.GetObject("AddContact.Image")));
             this.AddContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AddContact.Name = "AddContact";
-            this.AddContact.Size = new System.Drawing.Size(24, 24);
+            this.AddContact.Size = new System.Drawing.Size(29, 25);
             this.AddContact.Text = "Add Contact";
             this.AddContact.Click += new System.EventHandler(this.AddContact_Click);
             // 
@@ -300,7 +299,7 @@ namespace ContactApp
             this.EditContact.Image = ((System.Drawing.Image)(resources.GetObject("EditContact.Image")));
             this.EditContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.EditContact.Name = "EditContact";
-            this.EditContact.Size = new System.Drawing.Size(24, 24);
+            this.EditContact.Size = new System.Drawing.Size(29, 25);
             this.EditContact.Text = "Edit Contact";
             this.EditContact.Click += new System.EventHandler(this.EditContact_Click);
             // 
@@ -310,7 +309,7 @@ namespace ContactApp
             this.DeleteContact.Image = ((System.Drawing.Image)(resources.GetObject("DeleteContact.Image")));
             this.DeleteContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DeleteContact.Name = "DeleteContact";
-            this.DeleteContact.Size = new System.Drawing.Size(24, 24);
+            this.DeleteContact.Size = new System.Drawing.Size(29, 25);
             this.DeleteContact.Text = "Delete Contact";
             this.DeleteContact.Click += new System.EventHandler(this.DeleteContact_Click);
             // 
@@ -320,7 +319,7 @@ namespace ContactApp
             this.SaveContact.Image = ((System.Drawing.Image)(resources.GetObject("SaveContact.Image")));
             this.SaveContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveContact.Name = "SaveContact";
-            this.SaveContact.Size = new System.Drawing.Size(24, 24);
+            this.SaveContact.Size = new System.Drawing.Size(29, 25);
             this.SaveContact.Text = "Save Contact";
             this.SaveContact.Click += new System.EventHandler(this.SaveContact_Click);
             // 
@@ -330,7 +329,7 @@ namespace ContactApp
             this.DiscardContact.Image = ((System.Drawing.Image)(resources.GetObject("DiscardContact.Image")));
             this.DiscardContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DiscardContact.Name = "DiscardContact";
-            this.DiscardContact.Size = new System.Drawing.Size(24, 24);
+            this.DiscardContact.Size = new System.Drawing.Size(29, 25);
             this.DiscardContact.Text = "Discard Contact";
             this.DiscardContact.Click += new System.EventHandler(this.DiscardContact_Click);
             // 
@@ -340,7 +339,7 @@ namespace ContactApp
             this.ImportExel.Image = ((System.Drawing.Image)(resources.GetObject("ImportExel.Image")));
             this.ImportExel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ImportExel.Name = "ImportExel";
-            this.ImportExel.Size = new System.Drawing.Size(24, 24);
+            this.ImportExel.Size = new System.Drawing.Size(29, 25);
             this.ImportExel.Text = "Import Exel or CSV";
             this.ImportExel.Click += new System.EventHandler(this.ImportExel_Click);
             // 
@@ -350,7 +349,7 @@ namespace ContactApp
             this.sendNoteToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("sendNoteToolStripButton.Image")));
             this.sendNoteToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.sendNoteToolStripButton.Name = "sendNoteToolStripButton";
-            this.sendNoteToolStripButton.Size = new System.Drawing.Size(24, 24);
+            this.sendNoteToolStripButton.Size = new System.Drawing.Size(29, 25);
             this.sendNoteToolStripButton.Text = "SendNote";
             this.sendNoteToolStripButton.Click += new System.EventHandler(this.sendNoteToolStripButton_Click);
             // 
@@ -360,31 +359,31 @@ namespace ContactApp
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(29, 25);
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripTextBox2
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(120, 27);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(159, 28);
             this.toolStripTextBox2.TextChanged += new System.EventHandler(this.toolStripTextBox2_TextChanged);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.splitContainer1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 27);
+            this.panel2.Location = new System.Drawing.Point(0, 28);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(874, 256);
+            this.panel2.Size = new System.Drawing.Size(1165, 320);
             this.panel2.TabIndex = 21;
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -395,9 +394,8 @@ namespace ContactApp
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer1.Size = new System.Drawing.Size(874, 256);
-            this.splitContainer1.SplitterDistance = 161;
-            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.Size = new System.Drawing.Size(1165, 320);
+            this.splitContainer1.SplitterDistance = 214;
             this.splitContainer1.TabIndex = 0;
             // 
             // treeView1
@@ -406,10 +404,11 @@ namespace ContactApp
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.HideSelection = false;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4);
             this.treeView1.Name = "treeView1";
             this.treeView1.PathSeparator = "/";
             this.treeView1.ShowNodeToolTips = true;
-            this.treeView1.Size = new System.Drawing.Size(161, 256);
+            this.treeView1.Size = new System.Drawing.Size(214, 320);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
@@ -423,12 +422,12 @@ namespace ContactApp
             this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(710, 256);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(947, 320);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dataGridView1
@@ -439,11 +438,12 @@ namespace ContactApp
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(704, 211);
+            this.dataGridView1.Size = new System.Drawing.Size(939, 264);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -452,21 +452,21 @@ namespace ContactApp
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.nextButton);
             this.flowLayoutPanel1.Controls.Add(this.preButton);
+            this.flowLayoutPanel1.Controls.Add(this.nextButton);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(2, 219);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 274);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(706, 35);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(941, 44);
             this.flowLayoutPanel1.TabIndex = 3;
             // 
             // nextButton
             // 
-            this.nextButton.Location = new System.Drawing.Point(2, 2);
-            this.nextButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nextButton.Location = new System.Drawing.Point(84, 2);
+            this.nextButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(56, 19);
+            this.nextButton.Size = new System.Drawing.Size(75, 23);
             this.nextButton.TabIndex = 4;
             this.nextButton.Text = "next";
             this.nextButton.UseVisualStyleBackColor = true;
@@ -474,10 +474,10 @@ namespace ContactApp
             // 
             // preButton
             // 
-            this.preButton.Location = new System.Drawing.Point(62, 2);
-            this.preButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.preButton.Location = new System.Drawing.Point(3, 2);
+            this.preButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.preButton.Name = "preButton";
-            this.preButton.Size = new System.Drawing.Size(56, 19);
+            this.preButton.Size = new System.Drawing.Size(75, 23);
             this.preButton.TabIndex = 3;
             this.preButton.Text = "Pre";
             this.preButton.UseVisualStyleBackColor = true;
@@ -488,9 +488,10 @@ namespace ContactApp
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 283);
+            this.panel3.Location = new System.Drawing.Point(0, 348);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(874, 310);
+            this.panel3.Size = new System.Drawing.Size(1165, 382);
             this.panel3.TabIndex = 22;
             this.panel3.Visible = false;
             // 
@@ -499,8 +500,9 @@ namespace ContactApp
             this.panel5.Controls.Add(this.tabControl1);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(874, 275);
+            this.panel5.Size = new System.Drawing.Size(1165, 339);
             this.panel5.TabIndex = 0;
             // 
             // tabControl1
@@ -509,18 +511,20 @@ namespace ContactApp
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(874, 275);
+            this.tabControl1.Size = new System.Drawing.Size(1165, 339);
             this.tabControl1.TabIndex = 20;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(866, 249);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Size = new System.Drawing.Size(1157, 310);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Information";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -529,9 +533,10 @@ namespace ContactApp
             // 
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(860, 243);
+            this.panel1.Size = new System.Drawing.Size(1149, 302);
             this.panel1.TabIndex = 0;
             // 
             // panel7
@@ -541,17 +546,19 @@ namespace ContactApp
             this.panel7.Controls.Add(this.panel9);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(860, 243);
+            this.panel7.Size = new System.Drawing.Size(1149, 302);
             this.panel7.TabIndex = 1;
             // 
             // panel8
             // 
             this.panel8.Controls.Add(this.groupBox5);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(492, 0);
+            this.panel8.Location = new System.Drawing.Point(656, 0);
+            this.panel8.Margin = new System.Windows.Forms.Padding(4);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(88, 243);
+            this.panel8.Size = new System.Drawing.Size(120, 302);
             this.panel8.TabIndex = 33;
             // 
             // groupBox5
@@ -570,9 +577,11 @@ namespace ContactApp
             this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Controls.Add(this.textBox10);
             this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Location = new System.Drawing.Point(3, 15);
+            this.groupBox5.Location = new System.Drawing.Point(4, 18);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(82, 225);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Size = new System.Drawing.Size(112, 277);
             this.groupBox5.TabIndex = 24;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Address";
@@ -580,9 +589,10 @@ namespace ContactApp
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(28, 92);
+            this.label16.Location = new System.Drawing.Point(37, 113);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(24, 13);
+            this.label16.Size = new System.Drawing.Size(29, 16);
             this.label16.TabIndex = 31;
             this.label16.Text = "City";
             // 
@@ -590,17 +600,19 @@ namespace ContactApp
             // 
             this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Location = new System.Drawing.Point(67, 161);
+            this.textBox12.Location = new System.Drawing.Point(89, 198);
+            this.textBox12.Margin = new System.Windows.Forms.Padding(4);
             this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(10, 20);
+            this.textBox12.Size = new System.Drawing.Size(15, 22);
             this.textBox12.TabIndex = 44;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 197);
+            this.label9.Location = new System.Drawing.Point(20, 242);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(50, 13);
+            this.label9.Size = new System.Drawing.Size(62, 16);
             this.label9.TabIndex = 28;
             this.label9.Text = "Zip Code";
             // 
@@ -608,10 +620,11 @@ namespace ContactApp
             // 
             this.textBox15.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox15.Location = new System.Drawing.Point(67, 197);
+            this.textBox15.Location = new System.Drawing.Point(89, 242);
+            this.textBox15.Margin = new System.Windows.Forms.Padding(4);
             this.textBox15.MaxLength = 7;
             this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(10, 20);
+            this.textBox15.Size = new System.Drawing.Size(15, 22);
             this.textBox15.TabIndex = 45;
             this.textBox15.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
@@ -619,17 +632,19 @@ namespace ContactApp
             // 
             this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox14.Location = new System.Drawing.Point(67, 89);
+            this.textBox14.Location = new System.Drawing.Point(89, 110);
+            this.textBox14.Margin = new System.Windows.Forms.Padding(4);
             this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(10, 20);
+            this.textBox14.Size = new System.Drawing.Size(15, 22);
             this.textBox14.TabIndex = 42;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 127);
+            this.label7.Location = new System.Drawing.Point(32, 156);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.Size = new System.Drawing.Size(38, 16);
             this.label7.TabIndex = 24;
             this.label7.Text = "State";
             // 
@@ -637,17 +652,19 @@ namespace ContactApp
             // 
             this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.Location = new System.Drawing.Point(67, 125);
+            this.textBox13.Location = new System.Drawing.Point(89, 154);
+            this.textBox13.Margin = new System.Windows.Forms.Padding(4);
             this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(10, 20);
+            this.textBox13.Size = new System.Drawing.Size(15, 22);
             this.textBox13.TabIndex = 43;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 162);
+            this.label8.Location = new System.Drawing.Point(25, 199);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.Size = new System.Drawing.Size(52, 16);
             this.label8.TabIndex = 25;
             this.label8.Text = "Country";
             // 
@@ -655,17 +672,19 @@ namespace ContactApp
             // 
             this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(67, 53);
+            this.textBox11.Location = new System.Drawing.Point(89, 65);
+            this.textBox11.Margin = new System.Windows.Forms.Padding(4);
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(10, 20);
+            this.textBox11.Size = new System.Drawing.Size(15, 22);
             this.textBox11.TabIndex = 41;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 22);
+            this.label5.Location = new System.Drawing.Point(12, 27);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.Size = new System.Drawing.Size(68, 16);
             this.label5.TabIndex = 20;
             this.label5.Text = "Address 1";
             // 
@@ -673,17 +692,19 @@ namespace ContactApp
             // 
             this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Location = new System.Drawing.Point(67, 17);
+            this.textBox10.Location = new System.Drawing.Point(89, 21);
+            this.textBox10.Margin = new System.Windows.Forms.Padding(4);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(10, 20);
+            this.textBox10.Size = new System.Drawing.Size(15, 22);
             this.textBox10.TabIndex = 40;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 57);
+            this.label6.Location = new System.Drawing.Point(12, 70);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
+            this.label6.Size = new System.Drawing.Size(68, 16);
             this.label6.TabIndex = 21;
             this.label6.Text = "Address 2";
             // 
@@ -693,8 +714,9 @@ namespace ContactApp
             this.panel6.Controls.Add(this.panel11);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(492, 243);
+            this.panel6.Size = new System.Drawing.Size(656, 302);
             this.panel6.TabIndex = 35;
             // 
             // panel10
@@ -702,9 +724,10 @@ namespace ContactApp
             this.panel10.Controls.Add(this.groupBox6);
             this.panel10.Controls.Add(this.groupBox1);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(243, 0);
+            this.panel10.Location = new System.Drawing.Point(324, 0);
+            this.panel10.Margin = new System.Windows.Forms.Padding(4);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(249, 243);
+            this.panel10.Size = new System.Drawing.Size(332, 302);
             this.panel10.TabIndex = 34;
             // 
             // groupBox6
@@ -717,9 +740,11 @@ namespace ContactApp
             this.groupBox6.Controls.Add(this.button10);
             this.groupBox6.Controls.Add(this.button9);
             this.groupBox6.Controls.Add(this.dataGridView4);
-            this.groupBox6.Location = new System.Drawing.Point(3, 125);
+            this.groupBox6.Location = new System.Drawing.Point(4, 154);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(237, 117);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox6.Size = new System.Drawing.Size(316, 144);
             this.groupBox6.TabIndex = 40;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "DocketNumber";
@@ -728,26 +753,29 @@ namespace ContactApp
             // 
             this.docketNumbermaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.docketNumbermaskedTextBox.Location = new System.Drawing.Point(96, 16);
+            this.docketNumbermaskedTextBox.Location = new System.Drawing.Point(128, 20);
+            this.docketNumbermaskedTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.docketNumbermaskedTextBox.Mask = "LL-999999";
             this.docketNumbermaskedTextBox.Name = "docketNumbermaskedTextBox";
-            this.docketNumbermaskedTextBox.Size = new System.Drawing.Size(134, 20);
+            this.docketNumbermaskedTextBox.Size = new System.Drawing.Size(177, 22);
             this.docketNumbermaskedTextBox.TabIndex = 36;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 21);
+            this.label15.Location = new System.Drawing.Point(7, 26);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(82, 13);
+            this.label15.Size = new System.Drawing.Size(101, 16);
             this.label15.TabIndex = 40;
             this.label15.Text = "DocketNumber:";
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(8, 91);
+            this.button11.Location = new System.Drawing.Point(11, 112);
+            this.button11.Margin = new System.Windows.Forms.Padding(4);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(60, 23);
+            this.button11.Size = new System.Drawing.Size(80, 28);
             this.button11.TabIndex = 39;
             this.button11.Text = "Delete";
             this.button11.UseVisualStyleBackColor = true;
@@ -755,9 +783,10 @@ namespace ContactApp
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(8, 67);
+            this.button10.Location = new System.Drawing.Point(11, 82);
+            this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(60, 23);
+            this.button10.Size = new System.Drawing.Size(80, 28);
             this.button10.TabIndex = 38;
             this.button10.Text = "Edit";
             this.button10.UseVisualStyleBackColor = true;
@@ -765,9 +794,10 @@ namespace ContactApp
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(8, 42);
+            this.button9.Location = new System.Drawing.Point(11, 52);
+            this.button9.Margin = new System.Windows.Forms.Padding(4);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(60, 23);
+            this.button9.Size = new System.Drawing.Size(80, 28);
             this.button9.TabIndex = 37;
             this.button9.Text = "Add";
             this.button9.UseVisualStyleBackColor = true;
@@ -782,12 +812,13 @@ namespace ContactApp
             this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView4.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(74, 43);
+            this.dataGridView4.Location = new System.Drawing.Point(99, 53);
+            this.dataGridView4.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
             this.dataGridView4.RowHeadersWidth = 51;
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView4.Size = new System.Drawing.Size(155, 67);
+            this.dataGridView4.Size = new System.Drawing.Size(207, 82);
             this.dataGridView4.TabIndex = 44;
             this.dataGridView4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
             // 
@@ -801,9 +832,11 @@ namespace ContactApp
             this.groupBox1.Controls.Add(this.textBox6);
             this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Location = new System.Drawing.Point(6, 15);
+            this.groupBox1.Location = new System.Drawing.Point(8, 18);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(237, 108);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(316, 133);
             this.groupBox1.TabIndex = 26;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Auth Data";
@@ -811,9 +844,10 @@ namespace ContactApp
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 52);
+            this.label17.Location = new System.Drawing.Point(21, 64);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(58, 13);
+            this.label17.Size = new System.Drawing.Size(73, 16);
             this.label17.TabIndex = 30;
             this.label17.Text = "CANumber";
             // 
@@ -821,19 +855,21 @@ namespace ContactApp
             // 
             this.textBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox8.Location = new System.Drawing.Point(93, 78);
+            this.textBox8.Location = new System.Drawing.Point(124, 96);
+            this.textBox8.Margin = new System.Windows.Forms.Padding(4);
             this.textBox8.MaxLength = 7;
             this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(134, 20);
+            this.textBox8.Size = new System.Drawing.Size(177, 22);
             this.textBox8.TabIndex = 35;
             this.textBox8.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 21);
+            this.label13.Location = new System.Drawing.Point(9, 26);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(82, 13);
+            this.label13.Size = new System.Drawing.Size(103, 16);
             this.label13.TabIndex = 26;
             this.label13.Text = "USDOTNumber";
             // 
@@ -841,10 +877,11 @@ namespace ContactApp
             // 
             this.textBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox6.Location = new System.Drawing.Point(93, 18);
+            this.textBox6.Location = new System.Drawing.Point(124, 22);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
             this.textBox6.MaxLength = 7;
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(134, 20);
+            this.textBox6.Size = new System.Drawing.Size(177, 22);
             this.textBox6.TabIndex = 33;
             this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
@@ -852,19 +889,21 @@ namespace ContactApp
             // 
             this.textBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox7.Location = new System.Drawing.Point(93, 48);
+            this.textBox7.Location = new System.Drawing.Point(124, 59);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(4);
             this.textBox7.MaxLength = 7;
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(134, 20);
+            this.textBox7.Size = new System.Drawing.Size(177, 22);
             this.textBox7.TabIndex = 34;
             this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(22, 83);
+            this.label14.Location = new System.Drawing.Point(29, 102);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(52, 13);
+            this.label14.Size = new System.Drawing.Size(62, 16);
             this.label14.TabIndex = 9;
             this.label14.Text = "ApcantID";
             // 
@@ -874,8 +913,9 @@ namespace ContactApp
             this.panel11.Controls.Add(this.groupBox4);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Margin = new System.Windows.Forms.Padding(4);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(243, 243);
+            this.panel11.Size = new System.Drawing.Size(324, 302);
             this.panel11.TabIndex = 33;
             // 
             // groupBox2
@@ -890,39 +930,44 @@ namespace ContactApp
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(3, 15);
+            this.groupBox2.Location = new System.Drawing.Point(4, 18);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(234, 144);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(312, 177);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Name";
             // 
             // maskedTextBox2
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(85, 55);
+            this.maskedTextBox2.Location = new System.Drawing.Point(113, 68);
+            this.maskedTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.maskedTextBox2.Mask = "0000-9999999";
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.ReadOnly = true;
-            this.maskedTextBox2.Size = new System.Drawing.Size(132, 20);
+            this.maskedTextBox2.Size = new System.Drawing.Size(175, 22);
             this.maskedTextBox2.TabIndex = 28;
             // 
             // textBox18
             // 
             this.textBox18.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox18.Location = new System.Drawing.Point(85, 25);
+            this.textBox18.Location = new System.Drawing.Point(113, 31);
+            this.textBox18.Margin = new System.Windows.Forms.Padding(4);
             this.textBox18.MaxLength = 10;
             this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(132, 20);
+            this.textBox18.Size = new System.Drawing.Size(175, 22);
             this.textBox18.TabIndex = 27;
             this.textBox18.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(11, 27);
+            this.label21.Location = new System.Drawing.Point(15, 33);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(62, 13);
+            this.label21.Size = new System.Drawing.Size(77, 16);
             this.label21.TabIndex = 26;
             this.label21.Text = "LastUpdate";
             // 
@@ -930,44 +975,49 @@ namespace ContactApp
             // 
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(85, 115);
+            this.textBox3.Location = new System.Drawing.Point(113, 142);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(132, 20);
+            this.textBox3.Size = new System.Drawing.Size(175, 22);
             this.textBox3.TabIndex = 30;
             // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(85, 85);
+            this.textBox2.Location = new System.Drawing.Point(113, 105);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 20);
+            this.textBox2.Size = new System.Drawing.Size(175, 22);
             this.textBox2.TabIndex = 29;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 59);
+            this.label12.Location = new System.Drawing.Point(20, 73);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(52, 13);
+            this.label12.Size = new System.Drawing.Size(63, 16);
             this.label12.TabIndex = 23;
             this.label12.Text = "UniqueID";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 89);
+            this.label3.Location = new System.Drawing.Point(15, 110);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.Size = new System.Drawing.Size(78, 16);
             this.label3.TabIndex = 9;
             this.label3.Text = "LegalName";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 118);
+            this.label4.Location = new System.Drawing.Point(17, 145);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 13);
+            this.label4.Size = new System.Drawing.Size(72, 16);
             this.label4.TabIndex = 10;
             this.label4.Text = "DBAName";
             // 
@@ -979,9 +1029,11 @@ namespace ContactApp
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.textBox5);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Location = new System.Drawing.Point(5, 162);
+            this.groupBox4.Location = new System.Drawing.Point(7, 202);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(232, 78);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(309, 96);
             this.groupBox4.TabIndex = 21;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Social";
@@ -990,17 +1042,19 @@ namespace ContactApp
             // 
             this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(86, 18);
+            this.textBox4.Location = new System.Drawing.Point(115, 22);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(129, 20);
+            this.textBox4.Size = new System.Drawing.Size(171, 22);
             this.textBox4.TabIndex = 31;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 21);
+            this.label2.Location = new System.Drawing.Point(25, 26);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.Size = new System.Drawing.Size(57, 16);
             this.label2.TabIndex = 20;
             this.label2.Text = "Website";
             // 
@@ -1008,17 +1062,19 @@ namespace ContactApp
             // 
             this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox5.Location = new System.Drawing.Point(84, 52);
+            this.textBox5.Location = new System.Drawing.Point(112, 64);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(129, 20);
+            this.textBox5.Size = new System.Drawing.Size(171, 22);
             this.textBox5.TabIndex = 32;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 55);
+            this.label1.Location = new System.Drawing.Point(35, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.Size = new System.Drawing.Size(41, 16);
             this.label1.TabIndex = 21;
             this.label1.Text = "Email";
             // 
@@ -1027,18 +1083,19 @@ namespace ContactApp
             this.panel9.Controls.Add(this.closeButton);
             this.panel9.Controls.Add(this.groupBox3);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(580, 0);
+            this.panel9.Location = new System.Drawing.Point(776, 0);
+            this.panel9.Margin = new System.Windows.Forms.Padding(4);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(280, 243);
+            this.panel9.Size = new System.Drawing.Size(373, 302);
             this.panel9.TabIndex = 34;
             // 
             // closeButton
             // 
             this.closeButton.Image = ((System.Drawing.Image)(resources.GetObject("closeButton.Image")));
-            this.closeButton.Location = new System.Drawing.Point(244, -1);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeButton.Location = new System.Drawing.Point(325, -1);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(30, 20);
+            this.closeButton.Size = new System.Drawing.Size(40, 25);
             this.closeButton.TabIndex = 47;
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
@@ -1053,9 +1110,11 @@ namespace ContactApp
             this.groupBox3.Controls.Add(this.panel12);
             this.groupBox3.Controls.Add(this.dataGridView3);
             this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Location = new System.Drawing.Point(3, 15);
+            this.groupBox3.Location = new System.Drawing.Point(4, 18);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(274, 227);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Size = new System.Drawing.Size(365, 279);
             this.groupBox3.TabIndex = 23;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Phone And Fax";
@@ -1070,23 +1129,25 @@ namespace ContactApp
             this.dataGridView5.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView5.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(144, 59);
+            this.dataGridView5.Location = new System.Drawing.Point(192, 73);
+            this.dataGridView5.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.ReadOnly = true;
             this.dataGridView5.RowHeadersVisible = false;
             this.dataGridView5.RowHeadersWidth = 51;
             this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView5.Size = new System.Drawing.Size(127, 113);
+            this.dataGridView5.Size = new System.Drawing.Size(169, 139);
             this.dataGridView5.TabIndex = 49;
             this.dataGridView5.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellClick);
             this.dataGridView5.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView5_CellDoubleClick);
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(153, 23);
+            this.maskedTextBox1.Location = new System.Drawing.Point(204, 28);
+            this.maskedTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.maskedTextBox1.Mask = "(999) 000-0000";
             this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(111, 20);
+            this.maskedTextBox1.Size = new System.Drawing.Size(147, 22);
             this.maskedTextBox1.TabIndex = 47;
             this.maskedTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.maskedTextBox1_KeyDown);
             // 
@@ -1097,9 +1158,10 @@ namespace ContactApp
             this.comboBox1.Items.AddRange(new object[] {
             "Fax",
             "Phone"});
-            this.comboBox1.Location = new System.Drawing.Point(80, 22);
+            this.comboBox1.Location = new System.Drawing.Point(107, 27);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(61, 21);
+            this.comboBox1.Size = new System.Drawing.Size(80, 24);
             this.comboBox1.TabIndex = 46;
             // 
             // panel12
@@ -1107,17 +1169,19 @@ namespace ContactApp
             this.panel12.Controls.Add(this.button7);
             this.panel12.Controls.Add(this.button5);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel12.Location = new System.Drawing.Point(3, 197);
+            this.panel12.Location = new System.Drawing.Point(4, 242);
+            this.panel12.Margin = new System.Windows.Forms.Padding(4);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(268, 27);
+            this.panel12.Size = new System.Drawing.Size(357, 33);
             this.panel12.TabIndex = 43;
             // 
             // button7
             // 
             this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button7.Location = new System.Drawing.Point(128, 0);
+            this.button7.Location = new System.Drawing.Point(171, 0);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(140, 27);
+            this.button7.Size = new System.Drawing.Size(186, 33);
             this.button7.TabIndex = 51;
             this.button7.Text = "Delete Number";
             this.button7.UseVisualStyleBackColor = true;
@@ -1127,8 +1191,9 @@ namespace ContactApp
             // 
             this.button5.Dock = System.Windows.Forms.DockStyle.Left;
             this.button5.Location = new System.Drawing.Point(0, 0);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(128, 27);
+            this.button5.Size = new System.Drawing.Size(171, 33);
             this.button5.TabIndex = 50;
             this.button5.Text = "Add Number";
             this.button5.UseVisualStyleBackColor = true;
@@ -1144,13 +1209,14 @@ namespace ContactApp
             this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(5, 59);
+            this.dataGridView3.Location = new System.Drawing.Point(7, 73);
+            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(127, 113);
+            this.dataGridView3.Size = new System.Drawing.Size(169, 139);
             this.dataGridView3.TabIndex = 48;
             this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             this.dataGridView3.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellDoubleClick);
@@ -1158,19 +1224,21 @@ namespace ContactApp
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(23, 26);
+            this.label19.Location = new System.Drawing.Point(31, 32);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 13);
+            this.label19.Size = new System.Drawing.Size(55, 16);
             this.label19.TabIndex = 40;
             this.label19.Text = "Number";
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.groupBox7);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage3.Size = new System.Drawing.Size(866, 249);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage3.Size = new System.Drawing.Size(1157, 310);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Note";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1187,9 +1255,11 @@ namespace ContactApp
             this.groupBox7.Controls.Add(this.button3);
             this.groupBox7.Controls.Add(this.button2);
             this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Location = new System.Drawing.Point(6, 15);
+            this.groupBox7.Location = new System.Drawing.Point(8, 18);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(830, 238);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox7.Size = new System.Drawing.Size(1107, 293);
             this.groupBox7.TabIndex = 25;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Notes";
@@ -1202,54 +1272,60 @@ namespace ContactApp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.HighlightText;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(320, 19);
+            this.dataGridView2.Location = new System.Drawing.Point(427, 23);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(494, 164);
+            this.dataGridView2.Size = new System.Drawing.Size(659, 202);
             this.dataGridView2.TabIndex = 34;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(29, 58);
+            this.label11.Location = new System.Drawing.Point(39, 71);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(47, 13);
+            this.label11.Size = new System.Drawing.Size(55, 16);
             this.label11.TabIndex = 32;
             this.label11.Text = "Content:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(36, 32);
+            this.label10.Location = new System.Drawing.Point(48, 39);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(27, 13);
+            this.label10.Size = new System.Drawing.Size(33, 16);
             this.label10.TabIndex = 31;
             this.label10.Text = "Title";
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(27, 74);
+            this.textBox17.Location = new System.Drawing.Point(36, 91);
+            this.textBox17.Margin = new System.Windows.Forms.Padding(4);
             this.textBox17.Multiline = true;
             this.textBox17.Name = "textBox17";
             this.textBox17.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox17.Size = new System.Drawing.Size(227, 85);
+            this.textBox17.Size = new System.Drawing.Size(301, 104);
             this.textBox17.TabIndex = 25;
             // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(69, 29);
+            this.textBox16.Location = new System.Drawing.Point(92, 36);
+            this.textBox16.Margin = new System.Windows.Forms.Padding(4);
             this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(133, 20);
+            this.textBox16.Size = new System.Drawing.Size(176, 22);
             this.textBox16.TabIndex = 24;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(176, 202);
+            this.button3.Location = new System.Drawing.Point(235, 249);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(77, 23);
+            this.button3.Size = new System.Drawing.Size(103, 28);
             this.button3.TabIndex = 23;
             this.button3.Text = "Delete Note";
             this.button3.UseVisualStyleBackColor = true;
@@ -1257,9 +1333,10 @@ namespace ContactApp
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(101, 202);
+            this.button2.Location = new System.Drawing.Point(135, 249);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(71, 23);
+            this.button2.Size = new System.Drawing.Size(95, 28);
             this.button2.TabIndex = 22;
             this.button2.Text = "Edit Note";
             this.button2.UseVisualStyleBackColor = true;
@@ -1267,9 +1344,10 @@ namespace ContactApp
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 202);
+            this.button1.Location = new System.Drawing.Point(36, 249);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 23);
+            this.button1.Size = new System.Drawing.Size(93, 28);
             this.button1.TabIndex = 21;
             this.button1.Text = "Add Note";
             this.button1.UseVisualStyleBackColor = true;
@@ -1282,34 +1360,38 @@ namespace ContactApp
             this.panel4.Controls.Add(this.button6);
             this.panel4.Controls.Add(this.button4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 275);
+            this.panel4.Location = new System.Drawing.Point(0, 339);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(874, 35);
+            this.panel4.Size = new System.Drawing.Size(1165, 43);
             this.panel4.TabIndex = 21;
             // 
             // textBox19
             // 
-            this.textBox19.Location = new System.Drawing.Point(98, 2);
+            this.textBox19.Location = new System.Drawing.Point(131, 2);
+            this.textBox19.Margin = new System.Windows.Forms.Padding(4);
             this.textBox19.Name = "textBox19";
             this.textBox19.ReadOnly = true;
-            this.textBox19.Size = new System.Drawing.Size(401, 20);
+            this.textBox19.Size = new System.Drawing.Size(533, 22);
             this.textBox19.TabIndex = 54;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(25, 5);
+            this.label18.Location = new System.Drawing.Point(33, 6);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 13);
+            this.label18.Size = new System.Drawing.Size(82, 16);
             this.label18.TabIndex = 30;
             this.label18.Text = "Saving Path:";
             // 
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.Location = new System.Drawing.Point(670, 6);
+            this.button6.Location = new System.Drawing.Point(893, 7);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(89, 23);
+            this.button6.Size = new System.Drawing.Size(119, 28);
             this.button6.TabIndex = 53;
             this.button6.Text = "Cancel";
             this.button6.UseVisualStyleBackColor = true;
@@ -1318,9 +1400,10 @@ namespace ContactApp
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(769, 6);
+            this.button4.Location = new System.Drawing.Point(1025, 7);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(89, 23);
+            this.button4.Size = new System.Drawing.Size(119, 28);
             this.button4.TabIndex = 52;
             this.button4.Text = "Save";
             this.button4.UseVisualStyleBackColor = true;
@@ -1328,12 +1411,13 @@ namespace ContactApp
             // 
             // mainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 593);
+            this.ClientSize = new System.Drawing.Size(1165, 730);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.toolStrip1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "mainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contact";

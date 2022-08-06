@@ -11,6 +11,7 @@ namespace ContactApp
     interface IContanctsRepository
     {
         DataTable SelectAllRunner(string query);
+        Task<DataTable> SelectAllRunnerAsync(string query);
         DataTable SelectAll();
         bool ExistRunner(string query);
         DataTable SelectAllCompaniesField();

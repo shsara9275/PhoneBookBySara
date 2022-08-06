@@ -13,7 +13,7 @@ namespace ContactApp
     class ContanctsRepository : IContanctsRepository
     {
 
-        private string connectionString = @"Data Source=ICT-HAGHI-Z490\SQLEXPRESS2;Initial Catalog=PhoneBook;Integrated Security=true";
+        private string connectionString = @"Data Source=DESKTOP-4D2NIHO\SQLEXPRESS;Initial Catalog=PhoneBook;Integrated Security=true";
 
         public DataTable Search(string parameter)
         {
@@ -23,6 +23,25 @@ namespace ContactApp
         public DataTable SelcetRow(int contactId)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<DataTable> SelectAllRunnerAsync(string query)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                await Task.Run(() => { adapter.Fill(data); });
+                return data;
+
+            }
+            catch (Exception ex)
+            {
+                DataTable data = new DataTable();
+                return data;
+            }
+
         }
 
         public DataTable SelectAllRunner(string query)
